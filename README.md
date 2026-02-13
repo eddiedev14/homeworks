@@ -4,6 +4,7 @@ Este es el repositorio que contiene todas las actividades y tareas propuestas en
 
 - **📚 Branch _"tareas"_**: Contiene todas las tareas asignadas durante el curso y su respectiva solución
 - **🎯 Branch _"challenges"_**: Contiene todos los retos/challenges asignados durante el curso a fin de reforzar conocimientos y ponerse a prueba
+- **🎯 Branch _"practicas"_**: Contiene todas las practicas y ejercicios prácticos realizados durante la clase a fin de aprender nuevos conceptos o reforzar los existentes. Incluye repaso independiente
 
 ## 📌 Changelog
 
@@ -11,5 +12,7 @@ Este es el repositorio que contiene todas las actividades y tareas propuestas en
 | ---------- | ------------------------------------------------- | ------------- |
 | 2026-02-04 | Creación inicial del proyecto y estructura base   | main          |
 | 2026-02-07 | Realización tarea "01-arrays" sobre array methods | tareas        |
+| 2026-02-11 | Challenge #01 - Diferencias entre regular functions y arrow functions        | challenges
+| 2026-02-11 | Crear proyecto "first-steps" y componente HelloWorld        | practicas
 
 > Eddie Santiago Delgado Campo (2235060)
