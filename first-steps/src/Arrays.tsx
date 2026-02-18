@@ -1,16 +1,21 @@
-const myArray: string[] = [
-  "First App",
-  "Second App",
-  "Third App",
-  "Fourth App",
-];
+import { useState } from "react";
 
 export const Arrays = () => {
+  const [array, setArray] = useState<number[]>([]);
+
+  const handleAdd = () => {
+    const item = Date.now();
+    setArray((prev) => [...prev, item]);
+  };
+
   return (
-    <ol>
-      {myArray.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ol>
+    <div>
+      <button onClick={handleAdd}>Add new Item</button>
+      <ol>
+        {array.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ol>
+    </div>
   );
 };
