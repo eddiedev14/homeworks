@@ -1,7 +1,12 @@
 interface Props {
   message: string;
+  value: number;
 }
 
-export const PrintMessage = ({ message }: Props) => {
-  return <h3>{message}</h3>;
+export const PrintMessage = ({ message, value }: Props) => {
+  return (
+    <h3>
+      {message} - {value}
+    </h3>
+  );
 };

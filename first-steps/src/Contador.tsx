@@ -6,7 +6,7 @@ interface Props {
 
 export const Contador = ({ initial = 0 }: Props) => {
   //* States
-  const [counter, setCounter] = useState(initial);
+  const [counter, setCounter] = useState<number>(initial);
 
   //* Handlers
   const handleAdd = () => {
@@ -17,10 +17,15 @@ export const Contador = ({ initial = 0 }: Props) => {
     setCounter(counter - 1);
   };
 
+  const handleReset = () => {
+    setCounter(initial);
+  };
+
   return (
     <>
       <p>Contador: {counter}</p>
       <button onClick={handleAdd}>+1</button>
+      <button onClick={handleReset}>RESET</button>
       <button onClick={handleSubtract}>-1</button>
     </>
   );
