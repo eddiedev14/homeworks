@@ -4,6 +4,7 @@ import { HelloWorld } from "./HelloWorld";
 import { PrintMessage } from "./PrintMessage";
 import { Contador } from "./Contador";
 import { Arrays } from "./Arrays";
+import { EjemploMontaje } from "./EjemploMontaje";
 
 createRoot(document.getElementById("root") as HTMLDivElement).render(
   <StrictMode>
@@ -12,5 +13,6 @@ createRoot(document.getElementById("root") as HTMLDivElement).render(
     <PrintMessage message="Soy tu respuesta!" value={10} />
     <Contador initial={100} />
     <Arrays />
+    <EjemploMontaje />
   </StrictMode>
 );
