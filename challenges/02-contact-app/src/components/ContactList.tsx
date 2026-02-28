@@ -9,8 +9,8 @@ export const ContactList = () => {
         Aquí aparecerán todos tus contactos guardados en el sistema.
       </p>
       <div className="grid grid-cols-2 gap-4 mt-4">
-        {contacts.map(({ name, phone }) => (
-          <ContactCard name={name} phone={phone} />
+        {contacts.map(({ id, name, phone }) => (
+          <ContactCard key={id} id={id} name={name} phone={phone} />
         ))}
       </div>
     </section>
