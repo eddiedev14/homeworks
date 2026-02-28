@@ -1,7 +1,7 @@
 import type IContact from "../interfaces/contact.interface";
 
 // Este archivo es un mock (información falsa o de prueba) de los contactos
-export const contacts: IContact[] = [
+export const initialContacts: IContact[] = [
   {
     id: 1772245379264,
     name: "Eddie Santiago",

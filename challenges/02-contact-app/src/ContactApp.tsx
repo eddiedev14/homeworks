@@ -3,10 +3,12 @@ import { Header } from "./components/Header";
 import { Loader } from "./components/Loader";
 import { ContactList } from "./components/ContactList";
 import { ContactForm } from "./components/ContactForm";
+import { initialContacts } from "./data/contacts.mock.data";
 
 export const ContactApp = () => {
   //* States
   const [loading, setLoading] = useState(true);
+  const [contacts, setContacts] = useState(initialContacts);
 
   //* Effects
   useEffect(() => {
@@ -25,7 +27,7 @@ export const ContactApp = () => {
       />
 
       <main className="grid grid-cols-2 columns-2xl py-12 px-16 gap-8">
-        <ContactList />
+        <ContactList contacts={contacts} />
         <ContactForm />
       </main>
     </>

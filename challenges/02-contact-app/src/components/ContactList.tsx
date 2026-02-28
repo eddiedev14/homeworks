@@ -1,7 +1,11 @@
-import { contacts } from "../data/contacts.mock.data";
+import type IContact from "../interfaces/contact.interface";
 import { ContactCard } from "./ContactCard";
 
-export const ContactList = () => {
+interface Props {
+  contacts: IContact[];
+}
+
+export const ContactList = ({ contacts }: Props) => {
   return (
     <section>
       <h2 className="text-3xl font-bold">Tus Contactos</h2>
