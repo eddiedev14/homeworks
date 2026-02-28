@@ -1,3 +1,5 @@
+import { Button } from './Button';
+
 interface Props {
   title: string;
   paragraph: string;
@@ -10,9 +12,9 @@ export const Header = ({ title, paragraph, onLinkifyMusicClick, onNodeHistoryCli
     <header className="mt-6 flex flex-col items-center gap-2">
       <h1 className="text-5xl font-extrabold">{title}</h1>
       <p className="font-light text-slate-800">{paragraph}</p>
-      <div className="flex gap-4 *:py-2 *:px-4 *:rounded-xl *:border *:border-gray-200 *:cursor-pointer *:shadow *:transition-transform *:hover:scale-105">
-        <button onClick={onLinkifyMusicClick}>LinkifyMusic (Linked List)</button>
-        <button onClick={onNodeHistoryClick}>HistoryNode (Double Linked List)</button>
+      <div className="flex gap-4">
+        <Button text="LinkifyMusic (Linked List)" onClick={onLinkifyMusicClick} />
+        <Button text="HistoryNode (Double Linked List)" onClick={onNodeHistoryClick} />
       </div>
     </header>
   );
