@@ -1,12 +1,35 @@
-import avatar from "../images/avatar.png";
+import Swal from 'sweetalert2';
+import avatar from '../images/avatar.png';
+import { toast } from 'react-toastify';
 
 interface Props {
   id: number;
   name: string;
   phone: string;
+  onRemoveContact: (id: number) => void;
 }
 
-export const ContactCard = ({ name, phone }: Props) => {
+export const ContactCard = ({ id, name, phone, onRemoveContact }: Props) => {
+  //* Handlers
+  const handleClickRemove = () => {
+    // Use sweetalert2 to confirm the action
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esta acción',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#363836',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        onRemoveContact(id);
+        toast.success('¡Contacto eliminado correctamente!');
+      }
+    });
+  };
+
   return (
     <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 shadow transition-transform hover:scale-105">
       <img className="size-12" src={avatar} alt="User Avatar" />
@@ -15,7 +38,10 @@ export const ContactCard = ({ name, phone }: Props) => {
           <h3 className="text-md font-semibold">{name}</h3>
           <span className="text-sm font-light text-slate-800">{phone}</span>
         </div>
-        <button className="cursor-pointer bg-red-500 w-8 h-8 flex justify-center items-center rounded-full text-white">
+        <button
+          onClick={handleClickRemove}
+          className="cursor-pointer bg-red-500 w-8 h-8 flex justify-center items-center rounded-full text-white"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

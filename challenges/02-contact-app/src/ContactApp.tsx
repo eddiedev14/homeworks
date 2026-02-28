@@ -27,6 +27,10 @@ export const ContactApp = () => {
     setContacts((prev) => [...prev, contact]);
   };
 
+  const handleRemoveContact = (id: number) => {
+    setContacts((prev) => prev.filter((contact) => contact.id !== id));
+  };
+
   return (
     <>
       <ToastContainer />
@@ -38,7 +42,7 @@ export const ContactApp = () => {
       />
 
       <main className="grid grid-cols-2 columns-2xl py-12 px-16 gap-8">
-        <ContactList contacts={contacts} />
+        <ContactList contacts={contacts} onRemoveContact={handleRemoveContact} />
         <ContactForm onAddContact={handleAddContact} />
       </main>
     </>
