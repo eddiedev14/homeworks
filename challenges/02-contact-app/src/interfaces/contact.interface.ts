@@ -1,5 +1,5 @@
 export default interface IContact {
-  id: number; // Definido por los milisegundos con Date.now()
+  id: number; // Date.now()
   name: string;
-  phone: string; // Se deja el telefono como string para poder validarlo en el form con una expresión regular
+  phone: string; // The phone is a string to check it in the form submit with a regular expression
 }

@@ -1,4 +1,4 @@
-// Código del HTML extraido de: https://flowbite.com/docs/components/spinner/
+// HTML code adapted from: https://flowbite.com/docs/components/spinner/
 
 export const Loader = () => {
   return (
