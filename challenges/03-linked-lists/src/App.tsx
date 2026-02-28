@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Header } from './components/Header';
 import { LinkifyMusic } from './pages/LinkifyMusic';
 import { NodeHistory } from './pages/NodeHistory';
+import { Footer } from './components/Footer';
 
 // Union type for pages
 type Pages = 'linkify-music' | 'node-history';
@@ -30,6 +31,8 @@ export const App = () => {
 
       {currentPage === 'linkify-music' && <LinkifyMusic />}
       {currentPage === 'node-history' && <NodeHistory />}
+
+      <Footer />
     </>
   );
 };
