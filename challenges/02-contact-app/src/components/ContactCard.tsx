@@ -1,6 +1,7 @@
-import Swal from 'sweetalert2';
 import avatar from '../images/avatar.png';
 import { toast } from 'react-toastify';
+// https://sweetalert2.github.io/
+import Swal from 'sweetalert2';
 
 interface Props {
   id: number;

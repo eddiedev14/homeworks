@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Loader } from './components/Loader';
 import { ContactList } from './components/ContactList';
 import { ContactForm } from './components/ContactForm';
+import { Footer } from './components/Footer';
 import { initialContacts } from './data/contacts.mock.data';
 import type IContact from './interfaces/contact.interface';
 
@@ -45,6 +46,8 @@ export const ContactApp = () => {
         <ContactList contacts={contacts} onRemoveContact={handleRemoveContact} />
         <ContactForm onAddContact={handleAddContact} />
       </main>
+
+      <Footer />
     </>
   );
 };
