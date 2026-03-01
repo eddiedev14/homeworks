@@ -8,11 +8,8 @@ Este es el repositorio que contiene todas las actividades y tareas propuestas en
 
 ## 📌 Changelog
 
-| Fecha      | Descripción                                       | Rama afectada |
-| ---------- | ------------------------------------------------- | ------------- |
-| 2026-02-04 | Creación inicial del proyecto y estructura base   | main          |
-| 2026-02-07 | Realización tarea "01-arrays" sobre array methods | tareas        |
-| 2026-02-11 | Challenge #01 - Diferencias entre regular functions y arrow functions        | challenges
-| 2026-02-11 | Crear proyecto "first-steps" y componente HelloWorld        | practicas
+| Fecha      | Descripción                                     | Rama afectada |
+| ---------- | ----------------------------------------------- | ------------- |
+| 2026-02-04 | Creación inicial del proyecto y estructura base | main          |
 
 > Eddie Santiago Delgado Campo (2235060)
