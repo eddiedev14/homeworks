@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import musicPlayer from '../algorithms/LinkedList';
 import { Button } from '../components/Button';
+import musicPlayer from '../algorithms/LinkedList';
 import notFound from '../../public/img/not-found.png';
 
 export const LinkifyMusic = () => {
