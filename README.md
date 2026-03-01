@@ -7,9 +7,10 @@ Este es el repositorio que contiene todas las actividades y tareas propuestas en
 
 ## 📌 Changelog
 
-| Fecha      | Descripción                                               | Rama afectada |
-| ---------- | --------------------------------------------------------- | ------------- |
-| 2026-02-11 | Challenge 01: Diferencias entre regular y arrow functions | challenges    |
-| 2026-02-28 | Challenge 02: Aplicación de contactos                     | challenges    |
+| Fecha      | Descripción                                                      | Rama afectada |
+| ---------- | ---------------------------------------------------------------- | ------------- |
+| 2026-02-11 | Challenge 01: Diferencias entre regular y arrow functions        | challenges    |
+| 2026-02-28 | Challenge 02: Aplicación de contactos                            | challenges    |
+| 2026-03-01 | Challenge 03: LinkifyMusic & NodeHistory (Linked & Double Lists) | challenges    |
 
 > Eddie Santiago Delgado Campo (2235060)
