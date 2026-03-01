@@ -5,6 +5,7 @@ import notFound from '../../public/img/not-found.png';
 
 export const LinkifyMusic = () => {
   //* States
+  // Obtener la primera canción
   const [currentSong, setCurrentSong] = useState(musicPlayer.peek(1));
   const [playing, setPlaying] = useState(false);
 
