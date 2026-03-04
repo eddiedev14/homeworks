@@ -42,8 +42,6 @@ export default class SingleLinkedList {
   }
 
   remove(id: number) {
-    if (id === undefined) return null;
-
     if (!this.head)
       //Si no hay cabeza no se puede eliminar nada (no hay elementos)
       return null;

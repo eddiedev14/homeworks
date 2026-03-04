@@ -14,6 +14,7 @@ import type IHistoryRecord from "./interfaces/IHistoryRecord";
 import HistoryDoubleLinkedList, {
   Node,
 } from "./algorithms/HistoryDoubleLinkedList";
+
 import { AdministrativeCommittee } from "./components/AdministrativeCommittee";
 import { Footer } from "./components/Footer";
 
