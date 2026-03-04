@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import { pages } from '../data/pages.mock.data';
-import history from '../algorithms/DoubleLinkedLists';
 import { Button } from '../components/Button';
+import DoubleLinkedList from '../algorithms/DoubleLinkedLists';
 
 export const NodeHistory = () => {
   //* States
+  const [history, setHistory] = useState(() => {
+    const list = new DoubleLinkedList()
+    pages.forEach(page => {
+      list.append(page)
+    })
+    return list;
+  })
   const [currentPage, setCurrentPage] = useState(history.peek(1));
 
   //* Handlers

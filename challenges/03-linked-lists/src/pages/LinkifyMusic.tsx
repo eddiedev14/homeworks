@@ -1,12 +1,20 @@
 import { useRef, useState } from 'react';
 import { Button } from '../components/Button';
-import musicPlayer from '../algorithms/LinkedList';
+import PlayerLinkedList from '../algorithms/LinkedList';
 import notFound from '../../public/img/not-found.png';
+import { songs } from '../data/songs.mock.data';
 
 export const LinkifyMusic = () => {
   //* States
-  // Obtener la primera canción
-  const [currentSong, setCurrentSong] = useState(musicPlayer.peek(1));
+  const [musicList, setMusicList] = useState(() => {
+    const list = new PlayerLinkedList();
+    songs.forEach(song => {
+      list.append(song)
+    })
+    return list;
+  });
+
+  const [currentSong, setCurrentSong] = useState(musicList.peek(1));
   const [playing, setPlaying] = useState(false);
 
   //* Refs
@@ -29,12 +37,12 @@ export const LinkifyMusic = () => {
 
   const handleNextSong = () => {
     setPlaying(false);
-    setCurrentSong(musicPlayer.next(currentSong?.id));
+    setCurrentSong(musicList.next(currentSong?.id));
   };
 
   const handlePlayerReset = () => {
     setPlaying(false);
-    setCurrentSong(musicPlayer.peek(1));
+    setCurrentSong(musicList.peek(1));
   };
 
   return (
@@ -54,11 +62,11 @@ export const LinkifyMusic = () => {
             </div>
 
             <div className="flex justify-center gap-2 *:size-12 *:shadow *:rounded-full *:cursor-pointer *:text-3xl">
-              <button onClick={handleToggleSong} className="bg-emerald-500 text-white">
+              <button type='button' onClick={handleToggleSong} className="bg-emerald-500 text-white">
                 <i className={!playing ? 'ri-play-circle-fill' : 'ri-pause-circle-fill'}></i>
               </button>
 
-              <button
+              <button type='button'
                 onClick={handleNextSong}
                 className="bg-slate-100 text-slate-700 border border-slate-800"
               >
