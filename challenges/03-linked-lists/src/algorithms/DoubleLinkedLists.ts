@@ -35,6 +35,7 @@ export default class DoubleLinkedList {
 		if (!this.head) {
 			this.head = newNode;
 			this.tail = newNode;
+			this.length++;
 			return;
 		}
 
