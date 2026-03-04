@@ -1,7 +1,7 @@
 import type IDoctor from "../interfaces/IDoctor";
 
 interface Props {
-  currentDoctor: IDoctor | undefined; // undefined porque puede ser que no haya un siguiente paciente
+  currentDoctor: IDoctor | undefined;
 }
 
 export const Doctor = ({ currentDoctor }: Props) => {

@@ -5,5 +5,4 @@ export default interface IHistoryRecord {
   id: number;
   patient: IPatient;
   doctor: IDoctor;
-  date: Date;
 }

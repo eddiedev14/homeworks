@@ -1,17 +1,19 @@
-import type IDoctor from "../interfaces/IDoctor";
+import type IComittee from "../interfaces/ICommitee";
 
 class Node {
   //* Properties
-  public value: IDoctor;
+  public value: IComittee;
   public next: Node | null;
+  public prev: Node | null;
 
-  constructor(doctor: IDoctor) {
-    this.value = doctor;
+  constructor(comittePerson: IComittee) {
+    this.value = comittePerson;
     this.next = null;
+    this.prev = null;
   }
 }
 
-export default class DoctorCircularLinkedList {
+export default class ComitteeCircularDoubleLinkedList {
   //* Properties
   public head: null | Node;
   public tail: null | Node;
@@ -24,7 +26,7 @@ export default class DoctorCircularLinkedList {
   }
 
   //* Methods
-  append(value: IDoctor) {
+  append(value: IComittee) {
     const newNode = new Node(value);
 
     // Si no hay ningun elemento aún
@@ -34,6 +36,7 @@ export default class DoctorCircularLinkedList {
 
       // Se apunta a sí mismo
       newNode.next = newNode;
+      newNode.prev = newNode;
 
       this.length++;
       return;
@@ -41,9 +44,11 @@ export default class DoctorCircularLinkedList {
 
     // Si se añade un elemento nuevo al final actualizar prev y next
     if (this.tail) this.tail.next = newNode;
+    newNode.prev = this.tail;
     this.tail = newNode; //Actualizar cola
 
     // Hacer circular
     this.tail.next = this.head;
+    this.head.prev = this.tail;
   }
 }

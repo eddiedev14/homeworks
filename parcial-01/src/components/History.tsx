@@ -2,10 +2,20 @@ import type IHistoryRecord from "../interfaces/IHistoryRecord";
 import { Button } from "./Button";
 
 interface Props {
-  currentHistoryRecord: IHistoryRecord | undefined; // undefined porque puede ser que no haya un siguiente paciente
+  currentHistoryRecord: IHistoryRecord | undefined;
+  onPrevRecord: () => void;
+  onNextRecord: () => void;
+  prevDisabled: boolean;
+  nextDisabled: boolean;
 }
 
-export const History = ({ currentHistoryRecord }: Props) => {
+export const History = ({
+  currentHistoryRecord,
+  onPrevRecord,
+  onNextRecord,
+  prevDisabled,
+  nextDisabled,
+}: Props) => {
   return (
     <div>
       <h2 className="text-2xl font-bold">Historial de Atención</h2>
@@ -18,7 +28,8 @@ export const History = ({ currentHistoryRecord }: Props) => {
           <p className="text-sm text-slate-800 font-semibold">
             Número de Identificación: {currentHistoryRecord.patient.id}
           </p>
-          <h4 className="text-sm text-slate-700">Médico que atendió:</h4>
+          <hr />
+          <h4 className="text-sm text-slate-700 mt-2">Médico que atendió:</h4>
           <h3 className="text-xl font-bold">
             {currentHistoryRecord.doctor.name}
           </h3>
@@ -28,8 +39,16 @@ export const History = ({ currentHistoryRecord }: Props) => {
           <p className="text-sm text-slate-800 font-semibold">
             Cargo: {currentHistoryRecord.doctor.role}
           </p>
-          <Button text="Anterior Registro" onClick={() => {}} />
-          <Button text="Siguiente Registro" onClick={() => {}} />
+          <Button
+            text="Anterior Registro"
+            onClick={onPrevRecord}
+            disabled={prevDisabled}
+          />
+          <Button
+            text="Siguiente Registro"
+            onClick={onNextRecord}
+            disabled={nextDisabled}
+          />
         </div>
       )}
     </div>

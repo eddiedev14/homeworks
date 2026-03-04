@@ -15,9 +15,9 @@ class Node {
 
 export default class SingleLinkedList {
   //* Properties
-  private head: null | Node;
-  private tail: null | Node;
-  private length: number;
+  public head: null | Node;
+  public tail: null | Node;
+  public length: number;
 
   constructor() {
     this.head = null;
@@ -41,19 +41,46 @@ export default class SingleLinkedList {
     this.length++;
   }
 
-  // La función de búsqueda se realizará por id
-  peek(id: number) {
+  remove(id: number) {
+    if (id === undefined) return null;
+
+    if (!this.head)
+      //Si no hay cabeza no se puede eliminar nada (no hay elementos)
+      return null;
+    if (this.head.value.id === id) {
+      // Si el valor que se quiere eliminar es la cabeza. La cabeza será el siguiente
+      this.head = this.head.next;
+
+      // Si después de mover la cabeza, ahora no existe cabeza, tampoco puede existir cola
+      if (!this.head) {
+        this.tail = null;
+      }
+
+      this.length--;
+      return;
+    }
+
+    // Si no se empieza a recorrer uno por uno
     let current = this.head;
-
-    // Se recorre toda la lista
-    while (current) {
-      if (current.id === id) return current;
-
-      // Continuar con el siguiente si no lo encontro
+    while (current.next && current.next.value.id !== id) {
       current = current.next;
     }
 
-    //Si no lo encontro retorna null
-    return null;
+    // Si el siguiente es el valor que se desea obtener para remover
+    if (current.next) {
+      current.next = current.next.next; // Se establece el next, con el siguiente del valor que se va a eliminar.
+      if (!current.next) this.tail = current; // Si no hay siguiente, entonces es la cola
+      this.length--;
+    }
+  }
+
+  toArray() {
+    let current = this.head;
+    const array: IPatient[] = [];
+    while (current) {
+      array.push(current.value);
+      current = current.next;
+    }
+    return array;
   }
 }
