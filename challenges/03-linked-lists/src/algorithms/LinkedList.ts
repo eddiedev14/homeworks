@@ -58,22 +58,4 @@ export default class PlayerLinkedList {
 		//Si no lo encontro retorna null
 		return null;
 	}
-
-	next(id: number | undefined) {
-		if (id === undefined) return null;
-
-		let current = this.head;
-
-		// Se recorre toda la lista
-		while (current) {
-			// Si se encontró la canción actual se retorna la siguiente para avanzar
-			if (current.id === id) return current.next;
-
-			// Continuar con el siguiente si no lo encontro
-			current = current.next;
-		}
-
-		//Si no hay siguiente canción
-		return null;
-	}
 }

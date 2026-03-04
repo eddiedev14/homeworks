@@ -12,15 +12,18 @@ export const NodeHistory = () => {
     })
     return list;
   })
+
   const [currentPage, setCurrentPage] = useState(history.peek(1));
 
   //* Handlers
   const handlePreviousPage = () => {
-    setCurrentPage(history.prev(currentPage?.id));
+    if (!currentPage) return;
+    setCurrentPage(currentPage?.prev);
   };
 
   const handleNextPage = () => {
-    setCurrentPage(history.next(currentPage?.id));
+    if (!currentPage) return;
+    setCurrentPage(currentPage?.next);
   };
 
   return (
@@ -50,12 +53,12 @@ export const NodeHistory = () => {
         <Button
           text="Anterior Página"
           onClick={handlePreviousPage}
-          disabled={!history.prev(currentPage?.id)}
+          disabled={!currentPage?.prev}
         />
         <Button
           text="Siguiente Página"
           onClick={handleNextPage}
-          disabled={!history.next(currentPage?.id)}
+          disabled={!currentPage?.next}
         />
       </div>
     </main>

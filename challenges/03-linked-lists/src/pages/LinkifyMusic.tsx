@@ -36,8 +36,9 @@ export const LinkifyMusic = () => {
   };
 
   const handleNextSong = () => {
+    if (!currentSong) return;
     setPlaying(false);
-    setCurrentSong(musicList.next(currentSong?.id));
+    setCurrentSong(currentSong.next);
   };
 
   const handlePlayerReset = () => {
