@@ -1,15 +1,13 @@
-# Repositorio de Tareas y Actividades - Estructuras de Datos II
+# Challenge 02: Aplicación de Contactos (2026-02-28)
 
-Este es el repositorio que contiene todas las actividades y tareas propuestas en el curso de Estructuras de Datos II para el semestre 2026-01. Cada uno de los ejercicios se encuentran contenidos en las ramas (branches) del repositorio actual:
+Build a React app that allows you to list, add, and delete contacts, simulating initial data loading, using the basic concepts seen in class.
 
-- **📚 Branch _"tareas"_**: Contiene todas las tareas asignadas durante el curso y su respectiva solución
-- **🎯 Branch _"challenges"_**: Contiene todos los retos/challenges asignados durante el curso a fin de reforzar conocimientos y ponerse a prueba
-- **🎯 Branch _"practicas"_**: Contiene todas las practicas y ejercicios prácticos realizados durante la clase a fin de aprender nuevos conceptos o reforzar los existentes. Incluye repaso independiente
+The app must:
 
-## 📌 Changelog
+- Display a loader on startup
+- Load an initial contact list
+- Allow users to add contacts with name and phone.
+- Allow users to delete contacts
+- Divide the app into components
 
-| Fecha      | Descripción                                     | Rama afectada |
-| ---------- | ----------------------------------------------- | ------------- |
-| 2026-02-04 | Creación inicial del proyecto y estructura base | main          |
-
-> Eddie Santiago Delgado Campo (2235060)
+> Eddie Santiago Delgado Campo - 2235060
