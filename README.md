@@ -1,15 +1,8 @@
-# Repositorio de Tareas y Actividades - Estructuras de Datos II
+# Challenge 04: Librería (2026-03-11)
 
-Este es el repositorio que contiene todas las actividades y tareas propuestas en el curso de Estructuras de Datos II para el semestre 2026-01. Cada uno de los ejercicios se encuentran contenidos en las ramas (branches) del repositorio actual:
+1. Create and handle new stack of books. Every book must have its Name, ISBN, Author and Editorial
+2. Fill the stack with some mock data
+3. Create a new project in react, and implements a new screen with a form to create a new book, then add the book to the stack
+4. Print the books stack in screen
 
-- **📚 Branch _"tareas"_**: Contiene todas las tareas asignadas durante el curso y su respectiva solución
-- **🎯 Branch _"challenges"_**: Contiene todos los retos/challenges asignados durante el curso a fin de reforzar conocimientos y ponerse a prueba
-- **🎯 Branch _"practicas"_**: Contiene todas las practicas y ejercicios prácticos realizados durante la clase a fin de aprender nuevos conceptos o reforzar los existentes. Incluye repaso independiente
-
-## 📌 Changelog
-
-| Fecha      | Descripción                                     | Rama afectada |
-| ---------- | ----------------------------------------------- | ------------- |
-| 2026-02-04 | Creación inicial del proyecto y estructura base | main          |
-
-> Eddie Santiago Delgado Campo (2235060)
+> Eddie Santiago Delgado Campo - 2235060
