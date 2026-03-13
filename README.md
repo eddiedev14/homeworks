@@ -1,4 +1,4 @@
-# Challenge 05: ATM (2026-03-12)
+# Challenge 05: ATM (2026-03-11)
 
 1. Create and handle new queue of people in one ATM. Every person in the ATM must have its name, withdrawal amount and a ranom arrival date assigned by the system.
 2. Fill the queue with some mock data
