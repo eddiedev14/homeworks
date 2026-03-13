@@ -54,7 +54,7 @@ export const BookForm = ({ onAddBook, onTakeBook }: Props) => {
       return;
     }
 
-    // Create the contact following the IContact structure
+    // Create the book following the IBook structure
     const newBook: IBook = {
       isbn: Number(isbn),
       name,
@@ -81,7 +81,7 @@ export const BookForm = ({ onAddBook, onTakeBook }: Props) => {
       </p>
       <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="font-medium">
+          <label htmlFor="isbn" className="font-medium">
             ISBN:
           </label>
           <input
@@ -93,7 +93,7 @@ export const BookForm = ({ onAddBook, onTakeBook }: Props) => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="phone" className="font-medium">
+          <label htmlFor="name" className="font-medium">
             Nombre:
           </label>
           <input
@@ -105,7 +105,7 @@ export const BookForm = ({ onAddBook, onTakeBook }: Props) => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="font-medium">
+          <label htmlFor="author" className="font-medium">
             Autor:
           </label>
           <input
@@ -117,7 +117,7 @@ export const BookForm = ({ onAddBook, onTakeBook }: Props) => {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="font-medium">
+          <label htmlFor="editorial" className="font-medium">
             Editorial:
           </label>
           <input
