@@ -1,7 +1,6 @@
 import { useState, type ChangeEvent, type SubmitEvent } from "react";
 import { toast } from "react-toastify";
 import type IATMRecord from "../interfaces/IATMRecord.interface";
-import { randomArrivalDate } from "../utils/functions";
 
 interface Props {
   onAddATMRecord: (record: IATMRecord) => void;
@@ -49,7 +48,7 @@ export const ATMForm = ({ onAddATMRecord, onWithdrawal }: Props) => {
 
     // Create the contact following the IATMRecord structure
     const newATMRecord: IATMRecord = {
-      dateTimeEntry: randomArrivalDate(),
+      arrivalDate: new Date(), // Fecha actual
       person,
       description,
       amount: Number(amount),

@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { Header } from "./components/Header";
+import { ATMForm } from "./components/ATMForm";
+import { ATMList } from "./components/ATMList";
 import { Footer } from "./components/Footer";
 
 // https://fkhadra.github.io/react-toastify/
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Queue from "./algorithms/Queue.class";
 
+import Queue from "./algorithms/Queue.class";
 import { atmRecordsMock } from "./data/ATM.data";
+import type IATMRecord from "./interfaces/IATMRecord.interface";
 
 export const ATM = () => {
-  //* States (Stack)
-  const [libraryQueue, setLibraryQueue] = useState(() => {
+  //* States (Queue)
+  const [ATMQueue, setATMQueue] = useState(() => {
     const queue = new Queue();
 
-    // Ordenar la mock data
+    // Ordenar la mock data según la fecha de llegada (random)
     const sortedRecords = [...atmRecordsMock].sort(
-      (a, b) => a.dateTimeEntry.getTime() - b.dateTimeEntry.getTime()
+      (a, b) => a.arrivalDate.getTime() - b.arrivalDate.getTime()
     );
+
+    console.log(sortedRecords)
 
     sortedRecords.forEach((book) => {
       queue.enqueue(book);
@@ -27,41 +32,41 @@ export const ATM = () => {
   });
 
   //* Handlers
-  const handleAddBook = (book: IBook) => {
-    setLibraryStack((prev) => {
-      const newStack = new Stack();
+  const handleAddRecord = (record: IATMRecord) => {
+    setATMQueue((prev) => {
+      const newQueue = new Queue();
 
-      // Hacer una copia de la stack anterior
+      // Hacer una copia de la queue anterior
       prev.items.forEach((book) => {
-        newStack.push(book);
+        newQueue.enqueue(book);
       });
 
-      // Añadir el nuevo libro
-      newStack.push(book);
-      return newStack;
+      // Añadir el nuevo registro
+      newQueue.enqueue(record);
+      return newQueue;
     });
   };
 
-  const handleTakeBook = () => {
-    let bookTook: IBook | undefined | null;
+  const handleWithdrawal = () => {
+    let withdrawal: IATMRecord | undefined | null;
 
-    setLibraryStack((prev) => {
-      const newStack = new Stack();
+    setATMQueue((prev) => {
+      const newQueue = new Queue();
 
-      // Copiar los elementos de la pila
+      // Copiar los elementos de la cola
       prev.items.forEach((book) => {
-        newStack.push(book);
+        newQueue.enqueue(book);
       });
 
-      // Eliminar el libro
-      bookTook = newStack.pop();
-      return newStack;
+      // Eliminar el registro de la cola
+      withdrawal = newQueue.dequeue();
+      return newQueue;
     });
 
-    if (bookTook) {
-      toast.success(`El libro '${bookTook.name}' ha sido tomado correctamente`);
+    if (withdrawal) {
+      toast.success(`'${withdrawal.person}' ha retirado su dinero correctamente!`);
     } else {
-      toast.error(`No hay más libros en la librería`);
+      toast.error(`No hay más personas en la cola para el ATM`);
     }
   };
 
@@ -70,13 +75,13 @@ export const ATM = () => {
       <ToastContainer />
 
       <Header
-        title="Library Stack"
-        paragraph="Gestiona tus libros desde un solo lugar!"
+        title="ATM Queue"
+        paragraph="Gestiona tu atención de ATM desde un solo lugar!"
       />
 
       <main className="grid grid-cols-2 columns-2xl py-12 px-16 gap-8">
-        <BookForm onAddBook={handleAddBook} onTakeBook={handleTakeBook} />
-        <LibraryList books={libraryStack.items} />
+        <ATMForm onAddATMRecord={handleAddRecord} onWithdrawal={handleWithdrawal} />
+        <ATMList records={ATMQueue.items} />
       </main>
 
       <Footer />

@@ -14,10 +14,11 @@ export const ATMList = ({ records }: Props) => {
       </p>
       <div className="grid grid-cols-2 gap-4 mt-4">
         {records.map(
-          ({ dateTimeEntry, person, description, amount }, index) => (
+          ({ arrivalDate, person, description, amount }, index) => (
             <ATMCard
               key={index}
-              dateTimeEntry={dateTimeEntry}
+              id={index}
+              arrivalDate={arrivalDate}
               person={person}
               description={description}
               amount={amount}
