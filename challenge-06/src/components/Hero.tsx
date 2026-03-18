@@ -16,7 +16,7 @@ export const Hero = () => {
 
         <Link
           to="/login"
-          className="inline-block text-lg bg-black text-white px-6 py-3 rounded-xl shadow-md hover:bg-yellow-600 transition"
+          className="inline-block text-lg bg-black text-white px-6 py-3 rounded-xl shadow-md"
         >
           Iniciar sesión
         </Link>
