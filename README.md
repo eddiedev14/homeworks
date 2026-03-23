@@ -1,15 +1,19 @@
-# Repositorio de Tareas y Actividades - Estructuras de Datos II
+# Challenge 06: Login Page & Routes (2026-03-18)
 
-Este es el repositorio que contiene todas las actividades y tareas propuestas en el curso de Estructuras de Datos II para el semestre 2026-01. Cada uno de los ejercicios se encuentran contenidos en las ramas (branches) del repositorio actual:
+Create in react a new Demo Login Page. It should contain:
 
-- **📚 Branch _"tareas"_**: Contiene todas las tareas asignadas durante el curso y su respectiva solución
-- **🎯 Branch _"challenges"_**: Contiene todos los retos/challenges asignados durante el curso a fin de reforzar conocimientos y ponerse a prueba
-- **🎯 Branch _"practicas"_**: Contiene todas las practicas y ejercicios prácticos realizados durante la clase a fin de aprender nuevos conceptos o reforzar los existentes. Incluye repaso independiente
+- Email
+- Password
+- Button to Login
 
-## 📌 Changelog
+When the button is clicked, we are going to validate if the user is:
 
-| Fecha      | Descripción                                     | Rama afectada |
-| ---------- | ----------------------------------------------- | ------------- |
-| 2026-02-04 | Creación inicial del proyecto y estructura base | main          |
+- user@mail.com
+- password: 123
 
-> Eddie Santiago Delgado Campo (2235060)
+1. Use Context, Providers and States to handle necessary data.
+2. Based on the last challenge, create 2 different private pages that will show each exercise on each page.
+3. Test your private routes by login and logout
+4. Show the current username when the user is logged in.
+
+> Eddie Santiago Delgado Campo - 2235060
