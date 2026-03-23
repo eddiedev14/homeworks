@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import LoginIllustration from "/login.png";
+import { PageLink } from "./PageLink";
 
 export const Hero = () => {
   return (
@@ -13,13 +13,7 @@ export const Hero = () => {
           Inicia sesión y practica estructuras de datos en un sistema real con
           acceso privado, manejo de sesión y simulación de colas, listas y más.
         </p>
-
-        <Link
-          to="/login"
-          className="inline-block text-lg bg-black text-white px-6 py-3 rounded-xl shadow-md"
-        >
-          Iniciar sesión
-        </Link>
+        <PageLink path="/login" text="Iniciar sesión" />
       </div>
 
       <div className="flex justify-center">
