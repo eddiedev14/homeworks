@@ -1,5 +1,6 @@
 import { useBookForm } from "../../hooks/library/useBookForm";
 import type IBook from "../../interfaces/book.interface";
+import { Button } from "../shared/Button";
 
 interface Props {
   onAddBook: (book: IBook) => void;
@@ -75,19 +76,8 @@ export const BookForm = ({ onAddBook, onTakeBook }: Props) => {
           />
         </div>
         <div className="flex gap-4">
-          <button
-            type="submit"
-            className="w-48 py-2 bg-black text-white font-semibold rounded-md cursor-pointer transition-transform hover:scale-105"
-          >
-            Guardar
-          </button>
-          <button
-            type="button"
-            className="w-48 py-2 border border-black text-black font-semibold rounded-md cursor-pointer transition-transform hover:scale-105"
-            onClick={onTakeBook}
-          >
-            Tomar un libro
-          </button>
+          <Button type="submit" text="Guardar" variant="primary" />
+          <Button type="button" text="Tomar un libro" onClick={onTakeBook} />
         </div>
       </form>
     </section>

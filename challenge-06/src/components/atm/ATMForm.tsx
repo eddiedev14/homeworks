@@ -1,5 +1,6 @@
 import type IATMRecord from "../../interfaces/IATMRecord.interface";
 import { useATMForm } from "../../hooks/atm/useATMForm,";
+import { Button } from "../shared/Button";
 
 interface Props {
   onAddATMRecord: (record: IATMRecord) => void;
@@ -61,19 +62,8 @@ export const ATMForm = ({ onAddATMRecord, onWithdrawal }: Props) => {
           />
         </div>
         <div className="flex gap-4">
-          <button
-            type="submit"
-            className="w-48 py-2 bg-black text-white font-semibold rounded-md cursor-pointer transition-transform hover:scale-105"
-          >
-            Guardar
-          </button>
-          <button
-            type="button"
-            className="w-48 py-2 border border-black text-black font-semibold rounded-md cursor-pointer transition-transform hover:scale-105"
-            onClick={onWithdrawal}
-          >
-            Retirar dinero
-          </button>
+          <Button type="submit" text="Guardar" variant="primary" />
+          <Button type="button" text="Retirar dinero" onClick={onWithdrawal} />
         </div>
       </form>
     </section>

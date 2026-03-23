@@ -1,5 +1,6 @@
 import { Card } from "../components/shared/Card";
 import { Header } from "../components/shared/Header";
+import { Navbar } from "../components/shared/NavBar";
 import { useAuthContext } from "../hooks/shared/useAuthContext";
 
 export const Dashboard = () => {
@@ -7,13 +8,14 @@ export const Dashboard = () => {
 
   return (
     <>
+      <Navbar />
       <Header
         title={`¡Bienvenido ${user?.username}!`}
         paragraph="Desde esta página podrás acceder y probar cada uno de los challenges"
         showImage={true}
       />
 
-      <div className="flex flex-wrap justify-center mt-8 gap-8">
+      <div className="flex flex-wrap justify-center my-8 gap-8">
         <Card
           title="Library (Stack)"
           description="Practica y visualiza cómo funcionan las pilas (stacks) en una librería"

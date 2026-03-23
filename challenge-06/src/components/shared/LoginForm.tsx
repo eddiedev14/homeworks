@@ -1,5 +1,6 @@
 import ProfilePicture from "/profile-picture.png";
 import useLoginForm from "../../hooks/shared/useLoginForm";
+import { Button } from "./Button";
 
 export const LoginForm = () => {
   const {
@@ -50,12 +51,7 @@ export const LoginForm = () => {
               onChange={handlePasswordChange}
             />
           </div>
-          <button
-            type="submit"
-            className="mt-2 py-2 bg-transparent border rounded-sm font-semibold cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white focus:bg-black focus:text-white"
-          >
-            Iniciar Sesión
-          </button>
+          <Button type="submit" text="Iniciar Sesión" variant="primary" />
         </form>
       </section>
     </div>

@@ -14,7 +14,9 @@ export const Error = ({ errorCode }: Props) => {
   return (
     <div className="flex flex-col items-center">
       <img src={imgSrc} alt={`${errorCode} Illustration`} className="size-96" />
-      <h2 className="text-2xl font-semibold">{errorMessages[errorCode]}</h2>
+      <h2 className="text-2xl font-semibold mb-4">
+        {errorMessages[errorCode]}
+      </h2>
       <PageLink path="/" text="Volver al inicio" />
     </div>
   );

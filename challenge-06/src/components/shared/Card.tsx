@@ -16,7 +16,7 @@ export const Card = ({ title, description, emoji, path }: CardProps) => {
       <div className="flex flex-col">
         <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
         <p className="text-sm text-gray-600">{description}</p>
-        <PageLink path={path} text="Ir a challenge" small={true} />
+        <PageLink path={path} text="Ir a challenge" small />
       </div>
     </div>
   );

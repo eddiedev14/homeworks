@@ -1,3 +1,4 @@
+import { Navbar } from "../components/shared/NavBar";
 import { ATMList } from "../components/atm/ATMList";
 import { ATMForm } from "../components/atm/ATMForm";
 import { useATM } from "../hooks/atm/useATM";
@@ -9,6 +10,7 @@ export const ATM = () => {
 
   return (
     <>
+      <Navbar />
       <Header
         title="ATM Queue"
         paragraph="Gestiona tu atención de ATM desde un solo lugar!"

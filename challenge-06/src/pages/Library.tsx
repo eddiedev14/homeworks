@@ -1,3 +1,4 @@
+import { Navbar } from "../components/shared/NavBar";
 import { Header } from "../components/shared/Header";
 import { BookForm } from "../components/library/BookForm";
 import { LibraryList } from "../components/library/LibraryList";
@@ -9,6 +10,7 @@ export const Library = () => {
 
   return (
     <>
+      <Navbar />
       <Header
         title="Library Stack"
         paragraph="Gestiona tus libros desde un solo lugar!"
