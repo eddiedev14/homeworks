@@ -1,7 +1,7 @@
 import NotAllowedIllustration from "/403.png";
 import NotFoundIllustration from "/404.png";
 import { errorMessages } from "../data/error.messages.data";
-import { PageLink } from "../components/PageLink";
+import { PageLink } from "../components/shared/PageLink";
 
 interface Props {
   errorCode: "403" | "404";

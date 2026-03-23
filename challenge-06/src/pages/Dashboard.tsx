@@ -1,5 +1,5 @@
-import { Card } from "../components/Card";
-import { Header } from "../components/Header";
+import { Card } from "../components/shared/Card";
+import { Header } from "../components/shared/Header";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 export const Dashboard = () => {
