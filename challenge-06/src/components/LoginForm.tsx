@@ -1,4 +1,4 @@
-import ProfilePicture from "../../public/profile-picture.png";
+import ProfilePicture from "/profile-picture.png";
 
 export const LoginForm = () => {
   return (

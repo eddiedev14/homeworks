@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LoginIllustration from "../../public/login.png";
+import LoginIllustration from "/login.png";
 
 export const Hero = () => {
   return (
