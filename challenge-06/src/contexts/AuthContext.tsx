@@ -1,11 +1,13 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, type ReactNode } from "react";
 import type IUser from "../interfaces/user.interface";
-import useAuth from "../hooks/useAuth";
+import type IUserLogin from "../interfaces/userLogin.interface";
+import useAuthState from "../hooks/useAuthState";
 
 interface IAuthContext {
   user: IUser | null;
-  handleLogin: (user: IUser) => void;
-  handleLogout: () => void;
+  login: (credentials: IUserLogin) => boolean;
+  logout: () => void;
 }
 
 interface IProvider {
@@ -13,12 +15,12 @@ interface IProvider {
 }
 
 //* Crear context
-const AuthContext = createContext<null | IAuthContext>(null);
+export const AuthContext = createContext<null | IAuthContext>(null);
 
 //* Provider
 export const AuthContextProvider = ({ children }: IProvider) => {
   //? Llamar al custom hook
-  const contextData = useAuth();
+  const contextData = useAuthState();
 
   return (
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
