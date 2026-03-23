@@ -2,7 +2,7 @@ import { useEffect, useState, type ChangeEvent, type SubmitEvent } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import type IUserLogin from "../interfaces/userLogin.interface";
+import type IUserLogin from "../../interfaces/userLogin.interface";
 
 export default function useLoginForm() {
   //* Context

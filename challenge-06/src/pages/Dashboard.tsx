@@ -1,6 +1,6 @@
 import { Card } from "../components/shared/Card";
 import { Header } from "../components/shared/Header";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../hooks/shared/useAuthContext";
 
 export const Dashboard = () => {
   const { user } = useAuthContext();
@@ -10,6 +10,7 @@ export const Dashboard = () => {
       <Header
         title={`¡Bienvenido ${user?.username}!`}
         paragraph="Desde esta página podrás acceder y probar cada uno de los challenges"
+        showImage={true}
       />
 
       <div className="flex flex-wrap justify-center mt-8 gap-8">

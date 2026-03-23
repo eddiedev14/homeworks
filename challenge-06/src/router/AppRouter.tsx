@@ -5,6 +5,7 @@ import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { Dashboard } from "../pages/Dashboard";
 import { Error } from "../pages/Error";
+import { Library } from "../pages/Library";
 
 export const AppRouter = () => {
   return (
@@ -18,6 +19,7 @@ export const AppRouter = () => {
         {/* Rutas Privadas */}
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/library" element={<Library />} />
         </Route>
       </Routes>
     </AuthContextProvider>

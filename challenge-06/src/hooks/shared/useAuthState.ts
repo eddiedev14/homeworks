@@ -1,7 +1,7 @@
 import { useState } from "react";
-import type IUser from "../interfaces/user.interface";
-import type IUserLogin from "../interfaces/userLogin.interface";
-import { mockUser } from "../data/user.mock.data";
+import type IUser from "../../interfaces/user.interface";
+import type IUserLogin from "../../interfaces/userLogin.interface";
+import { mockUser } from "../../data/user.mock.data";
 
 export default function useAuthState() {
   //* States

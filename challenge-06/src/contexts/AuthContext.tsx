@@ -2,7 +2,7 @@
 import { createContext, type ReactNode } from "react";
 import type IUser from "../interfaces/user.interface";
 import type IUserLogin from "../interfaces/userLogin.interface";
-import useAuthState from "../hooks/useAuthState";
+import useAuthState from "../hooks/shared/useAuthState";
 
 interface IAuthContext {
   user: IUser | null;

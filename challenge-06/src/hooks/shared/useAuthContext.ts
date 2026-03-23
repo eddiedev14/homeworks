@@ -1,6 +1,6 @@
 //? Este hook debe ser creado porque el contexto puede ser null según el tipado.
 import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const useAuthContext = () => {
   const context = useContext(AuthContext);

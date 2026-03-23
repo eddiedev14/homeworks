@@ -1,0 +1,14 @@
+interface Props {
+  project: string;
+}
+
+export const Footer = ({ project }: Props) => {
+  return (
+    <footer className="bg-slate-950 text-white text-center mt-5 p-4">
+      <h5 className="text-xl font-bold">{project}</h5>
+      <p className="text-sm font-light">
+        Eddie Santiago Delgado Campo (G1) - Challenge 04 EDYA2
+      </p>
+    </footer>
+  );
+};
