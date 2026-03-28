@@ -8,7 +8,7 @@ interface Props {
 
 export const Header = ({ title, paragraph, showImage = false }: Props) => {
   return (
-    <header className="mt-6 flex flex-col items-center gap-2">
+    <header className="mt-6 flex flex-col items-center gap-2 mb-6">
       {showImage && (
         <img
           src={ProfilePicture}
