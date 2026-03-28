@@ -15,7 +15,7 @@ export const Button = ({
     "px-4 py-2 font-semibold rounded-md cursor-pointer transition-all border";
 
   const variantStyles = {
-    primary: "bg-black text-white border-black hover:bg-gray-800",
+    primary: "bg-black text-white hover:bg-green-700",
     secondary:
       "bg-transparent text-black border-black hover:bg-black hover:text-white",
     destructive: "bg-red-500 text-white border-red-500 hover:bg-red-600",

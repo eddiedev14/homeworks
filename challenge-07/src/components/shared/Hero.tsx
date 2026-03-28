@@ -5,15 +5,20 @@ export const Hero = () => {
   return (
     <header className="grid grid-cols-2 min-h-screen items-center px-16">
       <div className="space-y-6">
-        <h1 className="text-5xl font-bold text-gray-900">Challenge 06</h1>
+        <h1 className="text-5xl font-bold text-gray-900">
+          Taskie (Challenge 07)
+        </h1>
         <p className="text-xl text-gray-600">
           Eddie Santiago Delgado Campo - EDYA2
         </p>
         <p className="text-gray-700 max-w-xl">
-          Inicia sesión y practica estructuras de datos en un sistema real con
-          acceso privado, manejo de sesión y simulación de colas, listas y más.
+          Registra e inicia sesión en nuestro software para controlar desde un
+          solo lugar todas tus tareas y pendientes de forma práctica y sencilla
         </p>
-        <PageLink path="/login" text="Iniciar sesión" />
+        <div className="flex gap-4">
+          <PageLink path="/register" text="¡Regístrate!" />
+          <PageLink path="/login" text="¡Inicia Sesión!" bordered />
+        </div>
       </div>
 
       <div className="flex justify-center">
