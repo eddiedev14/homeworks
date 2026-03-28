@@ -1,21 +1,16 @@
-import NotAllowedIllustration from "/403.png";
 import NotFoundIllustration from "/404.png";
-import { errorMessages } from "../data/error.messages.data";
 import { PageLink } from "../components/shared/PageLink";
 
-interface Props {
-  errorCode: "403" | "404";
-}
-
-export const Error = ({ errorCode }: Props) => {
-  const imgSrc =
-    errorCode === "404" ? NotFoundIllustration : NotAllowedIllustration;
-
+export const Error = () => {
   return (
     <div className="flex flex-col items-center">
-      <img src={imgSrc} alt={`${errorCode} Illustration`} className="size-96" />
+      <img
+        src={NotFoundIllustration}
+        alt="404 Illustration"
+        className="size-96"
+      />
       <h2 className="text-2xl font-semibold mb-4">
-        {errorMessages[errorCode]}
+        ¡La página a la que tratas de acceder no existe!
       </h2>
       <PageLink path="/" text="Volver al inicio" />
     </div>
