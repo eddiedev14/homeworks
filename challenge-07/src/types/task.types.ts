@@ -5,5 +5,5 @@ export type Task = {
   completed: boolean;
 };
 
-// Se usa partial para crear variante para el actualizar
-export type TaskUpdate = Partial<Task>;
+export type TaskInput = Omit<Task, "id">;
+export type TaskUpdate = Partial<TaskInput>;

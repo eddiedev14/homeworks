@@ -7,5 +7,5 @@ import { useAuthContext } from "../hooks/auth/useAuthContext";
 
 export const GuestOnlyRoute = () => {
   const { user } = useAuthContext();
-  return user ? <Navigate to="/dashboard" /> : <Outlet />;
+  return user ? <Navigate to="/tasks/dashboard" /> : <Outlet />;
 };

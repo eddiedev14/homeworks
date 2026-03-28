@@ -1,10 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { GuestOnlyRoute } from "./GuestOnlyRoute";
-import { Home, Login, Dashboard, Error, Register } from "../pages";
+import { TaskRoute } from "./TaskRoute";
+import {
+  Home,
+  Login,
+  Dashboard,
+  Error,
+  Register,
+  TaskFormPage,
+} from "../pages";
 import { useAuthContext } from "../hooks/auth/useAuthContext";
 import { Loader } from "../components/shared/Loader";
-import { TaskFormPage } from "../pages/tasks/TaskFormPage";
 
 export const AppRouter = () => {
   // * Esperar a que se compruebe si hay una sesión activa en toda la app.
@@ -20,16 +27,18 @@ export const AppRouter = () => {
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
 
-      {/* Dashboard solo para usuarios que no tienen una sesión activa */}
+      {/* Login solo para usuarios que no tienen una sesión activa */}
       <Route element={<GuestOnlyRoute />}>
         <Route path="/login" element={<Login />} />
       </Route>
 
       {/* Rutas Privadas */}
       <Route element={<PrivateRoute />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/tasks/new" element={<TaskFormPage />} />
-        <Route path="/tasks/edit" element={<TaskFormPage />} />
+        {/* Tasks */}
+        <Route path="/tasks" element={<TaskRoute />}>
+          <Route path="/tasks/dashboard" element={<Dashboard />} />
+          <Route path="/tasks/new" element={<TaskFormPage />} />
+        </Route>
       </Route>
 
       <Route path="/*" element={<Error />} />
