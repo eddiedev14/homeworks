@@ -1,13 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, type ReactNode } from "react";
-import type IUser from "../interfaces/user.interface";
-import type IUserLogin from "../interfaces/userLogin.interface";
+import type { User, UserLogin, UserUI } from "../types/user.types";
 import useAuthState from "../hooks/shared/useAuthState";
 
 interface IAuthContext {
-  user: IUser | null;
-  login: (credentials: IUserLogin) => boolean;
-  logout: () => void;
+  user: UserUI | null;
+  loading: boolean;
+  register: (credentials: User) => Promise<string | null>;
+  login: (credentials: UserLogin) => Promise<string | null>;
+  logout: () => Promise<string | null>;
 }
 
 interface IProvider {
