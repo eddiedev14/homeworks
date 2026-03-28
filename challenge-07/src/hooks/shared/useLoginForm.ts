@@ -1,27 +1,15 @@
-import { useEffect, useState, type ChangeEvent, type SubmitEvent } from "react";
+import { useState, type ChangeEvent, type SubmitEvent } from "react";
 import { useAuthContext } from "./useAuthContext";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import type IUserLogin from "../../interfaces/userLogin.interface";
+import type { UserLogin } from "../../types/user.types";
 
 export default function useLoginForm() {
   //* Context
-  const { user, login } = useAuthContext();
-
-  //* Navigate
-  const navigate = useNavigate();
+  const { login } = useAuthContext();
 
   //* States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  //* Effects
-  //? Si ya hay un user en el context se navega directamente al dashboard
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard");
-    }
-  }, []);
 
   //* Functions
   const handleEmailChange = (
@@ -36,28 +24,30 @@ export default function useLoginForm() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = (e: SubmitEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Crear objeto IUserLogin con las credenciales
-    const userLogin: IUserLogin = {
+    if (email.trim() === "" || password.trim() === "") {
+      toast.error("Todos los campos son obligatorios");
+      return;
+    }
+
+    // Crear objeto UserLogin con las credenciales
+    const credentials: UserLogin = {
       email,
       password,
     };
 
     // Llamar a la función login del context
-    const logged: boolean = login(userLogin);
+    const errorMessage = await login(credentials);
 
-    if (logged) {
-      toast.success("¡Has iniciado sesión correctamente!");
-
-      //? Se usa replace: true, para que luego no se pueda retroceder de nuevo al login
-      navigate("/dashboard", { replace: true });
+    if (!errorMessage) {
+      toast.success("¡Sesión iniciada correctamente!");
       return;
     }
 
     // Mostrar alerta
-    toast.error("Las credenciales ingresadas no son válidas");
+    toast.error(errorMessage);
   };
 
   return {
