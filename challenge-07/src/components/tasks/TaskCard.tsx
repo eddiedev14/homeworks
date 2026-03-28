@@ -1,7 +1,10 @@
+import { useTaskCard } from "../../hooks/tasks/useTaskCard";
 import type { Task } from "../../types/task.types";
 import { Button } from "../shared/Button";
 
 export const TaskCard = ({ id, title, description, completed }: Task) => {
+  const { handleCheckboxChange } = useTaskCard(id, completed);
+
   return (
     <div className="flex flex-col gap-1 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow w-full max-w-sm">
       <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
@@ -11,6 +14,7 @@ export const TaskCard = ({ id, title, description, completed }: Task) => {
           type="checkbox"
           id={`completed-${id}`}
           checked={completed}
+          onChange={handleCheckboxChange}
           className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft cursor-pointer"
         />
         <label

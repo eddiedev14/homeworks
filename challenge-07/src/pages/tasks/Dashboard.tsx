@@ -1,27 +1,14 @@
-import { useEffect } from "react";
 import { Header } from "../../components/shared/Header";
 import { Navbar } from "../../components/shared/NavBar";
 import { PageLink } from "../../components/shared/PageLink";
 import { TaskCard } from "../../components/tasks/TaskCard";
 import { useAuthContext } from "../../hooks/auth/useAuthContext";
-import { useTaskContext } from "../../hooks/tasks/useTaskContext";
-import { toast } from "react-toastify";
 import { CommonLoader } from "../../components/shared/CommonLoader";
+import { useTaskDashboard } from "../../hooks/tasks/useTaskDashboard";
 
 export const Dashboard = () => {
-  const { user, getUserId } = useAuthContext();
-  const { tasks, loading, error, getAllTasks } = useTaskContext();
-
-  //* States
-  useEffect(() => {
-    const fetchTasks = async () => {
-      //* Obtener todas las tareas de ese usario en concreto
-      await getAllTasks([["userID", "==", getUserId()]]);
-      if (error) toast.error(error);
-    };
-
-    fetchTasks();
-  }, []);
+  const { user } = useAuthContext();
+  const { tasks, loading } = useTaskDashboard();
 
   return (
     <div className="flex flex-col items-center">

@@ -49,7 +49,7 @@ export const useTaskForm = () => {
 
     if (taskAdded) {
       toast.success("Tarea añadida correctamente!");
-      navigate("/tasks/Dashboard");
+      navigate("/tasks/dashboard");
       return;
     }
 
