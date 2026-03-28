@@ -1,5 +1,4 @@
 import { useAuthContext } from "../../hooks/shared/useAuthContext";
-import { useNavigate } from "react-router-dom";
 import { Button } from "./Button";
 import { PageLink } from "./PageLink";
 import { toast } from "react-toastify";
@@ -8,14 +7,10 @@ export const Navbar = () => {
   //* Context
   const { logout } = useAuthContext();
 
-  //* Navigate
-  const navigate = useNavigate();
-
   //* Handlers
   const handleLogout = () => {
     logout();
     toast.success("¡Has cerrado sesión correctamente!");
-    navigate("/login");
   };
 
   return (
