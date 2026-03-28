@@ -1,5 +1,5 @@
 import ProfilePicture from "/profile-picture.png";
-import useLoginForm from "../../hooks/shared/useLoginForm";
+import useLoginForm from "../../hooks/auth/useLoginForm";
 import { Button } from "../shared/Button";
 
 export const LoginForm = () => {

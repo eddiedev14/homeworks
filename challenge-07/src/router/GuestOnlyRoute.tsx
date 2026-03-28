@@ -3,7 +3,7 @@
 //? De este modo se filtran rutas solo para usuarios que no tienen una sesión activa
 
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthContext } from "../hooks/shared/useAuthContext";
+import { useAuthContext } from "../hooks/auth/useAuthContext";
 
 export const GuestOnlyRoute = () => {
   const { user } = useAuthContext();

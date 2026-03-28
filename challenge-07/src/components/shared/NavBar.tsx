@@ -1,4 +1,4 @@
-import { useAuthContext } from "../../hooks/shared/useAuthContext";
+import { useAuthContext } from "../../hooks/auth/useAuthContext";
 import { Button } from "./Button";
 import { PageLink } from "./PageLink";
 import { toast } from "react-toastify";

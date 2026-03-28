@@ -10,7 +10,7 @@ import {
   ATM,
   Register,
 } from "../pages";
-import { useAuthContext } from "../hooks/shared/useAuthContext";
+import { useAuthContext } from "../hooks/auth/useAuthContext";
 import { Loader } from "../components/shared/Loader";
 
 export const AppRouter = () => {

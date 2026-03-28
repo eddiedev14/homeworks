@@ -1,7 +1,7 @@
 import { Card } from "../components/shared/Card";
 import { Header } from "../components/shared/Header";
 import { Navbar } from "../components/shared/NavBar";
-import { useAuthContext } from "../hooks/shared/useAuthContext";
+import { useAuthContext } from "../hooks/auth/useAuthContext";
 
 export const Dashboard = () => {
   const { user } = useAuthContext();

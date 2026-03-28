@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, type ReactNode } from "react";
 import type { User, UserLogin, UserUI } from "../types/user.types";
-import useAuthState from "../hooks/shared/useAuthState";
+import useAuthState from "../hooks/auth/useAuthState";
 
 interface IAuthContext {
   user: UserUI | null;
