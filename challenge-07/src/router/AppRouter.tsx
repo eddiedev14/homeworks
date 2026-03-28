@@ -1,15 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { GuestOnlyRoute } from "./GuestOnlyRoute";
-import {
-  Home,
-  Login,
-  Dashboard,
-  Error,
-  Library,
-  ATM,
-  Register,
-} from "../pages";
+import { Home, Login, Dashboard, Error, Register } from "../pages";
 import { useAuthContext } from "../hooks/auth/useAuthContext";
 import { Loader } from "../components/shared/Loader";
 
@@ -37,8 +29,6 @@ export const AppRouter = () => {
       {/* Rutas Privadas */}
       <Route element={<PrivateRoute />}>
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/library" element={<Library />} />+
-        <Route path="/atm" element={<ATM />} />
       </Route>
     </Routes>
   );
