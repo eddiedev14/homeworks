@@ -4,6 +4,7 @@ import { GuestOnlyRoute } from "./GuestOnlyRoute";
 import { Home, Login, Dashboard, Error, Register } from "../pages";
 import { useAuthContext } from "../hooks/auth/useAuthContext";
 import { Loader } from "../components/shared/Loader";
+import { TaskFormPage } from "../pages/tasks/TaskFormPage";
 
 export const AppRouter = () => {
   // * Esperar a que se compruebe si hay una sesión activa en toda la app.
@@ -24,12 +25,14 @@ export const AppRouter = () => {
         <Route path="/login" element={<Login />} />
       </Route>
 
-      <Route path="/*" element={<Error />} />
-
       {/* Rutas Privadas */}
       <Route element={<PrivateRoute />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/tasks/new" element={<TaskFormPage />} />
+        <Route path="/tasks/edit" element={<TaskFormPage />} />
       </Route>
+
+      <Route path="/*" element={<Error />} />
     </Routes>
   );
 };
