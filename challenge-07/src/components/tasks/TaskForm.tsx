@@ -7,19 +7,26 @@ export const TaskForm = () => {
     title,
     description,
     loading,
+    selectedTask,
     handleTitleChange,
     handleDescriptionChange,
     handleSubmit,
   } = useTaskForm();
 
   if (loading) {
-    return <CommonLoader text="Creando tarea..." />;
+    return (
+      <CommonLoader
+        text={selectedTask ? "Actualizando tarea..." : "Creando tarea..."}
+      />
+    );
   }
 
   return (
     <div className="my-6 mx-6 flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">Crear nueva tarea</h1>
+        <h1 className="text-4xl font-bold">
+          {selectedTask ? "Actualizar tarea" : "Crear nueva tarea"}
+        </h1>
         <form
           className="w-lg mt-2 flex flex-col gap-4 *:flex *:flex-col *:gap-1"
           onSubmit={handleSubmit}
@@ -47,7 +54,11 @@ export const TaskForm = () => {
               onChange={handleDescriptionChange}
             />
           </div>
-          <Button type="submit" text="Crear tarea" variant="primary" />
+          <Button
+            type="submit"
+            text={selectedTask ? "Actualizar tarea" : "Crear tarea"}
+            variant="primary"
+          />
         </form>
       </div>
     </div>

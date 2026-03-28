@@ -10,9 +10,12 @@ interface ITaskContext {
   isFetched: boolean;
   loading: boolean;
   error: string | null;
+
   newTask: (data: TaskInput) => Promise<boolean>;
   getAllTasks: (filters?: Filter[]) => Promise<void>;
   updateTask: (id: string, data: TaskUpdate) => Promise<boolean>;
+  handleSelectedTaskChange: (taskId: string) => void;
+  clearSelectedTask: () => void;
 }
 
 interface IProvider {

@@ -18,7 +18,7 @@ export const Dashboard = () => {
         paragraph="Desde esta página podrás gestionar todas tus tareas"
         showImage={true}
       />
-      <PageLink path="/tasks/new" text="Nueva Tarea" />
+      <PageLink path="/tasks/form" text="Nueva Tarea" />
 
       {loading && <CommonLoader text="Obteniendo tus tareas..." />}
       {!loading && (

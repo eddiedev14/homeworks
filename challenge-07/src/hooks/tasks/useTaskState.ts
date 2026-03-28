@@ -50,6 +50,15 @@ export const useTaskState = () => {
     return false;
   };
 
+  const handleSelectedTaskChange = (taskId: string) => {
+    const task = tasks.find((t) => t.id === taskId) || null;
+    setSelectedTask(task);
+  };
+
+  const clearSelectedTask = () => {
+    setSelectedTask(null);
+  };
+
   return {
     // Values / states
     tasks,
@@ -62,5 +71,7 @@ export const useTaskState = () => {
     newTask,
     getAllTasks,
     updateTask,
+    handleSelectedTaskChange,
+    clearSelectedTask,
   };
 };

@@ -37,7 +37,7 @@ export const AppRouter = () => {
         {/* Tasks */}
         <Route path="/tasks" element={<TaskRoute />}>
           <Route path="/tasks/dashboard" element={<Dashboard />} />
-          <Route path="/tasks/new" element={<TaskFormPage />} />
+          <Route path="/tasks/form" element={<TaskFormPage />} />
         </Route>
       </Route>
 
