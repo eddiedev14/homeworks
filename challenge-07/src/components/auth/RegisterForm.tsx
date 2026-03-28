@@ -1,6 +1,6 @@
 import ProfilePicture from "/profile-picture.png";
 import { Button } from "../shared/Button";
-import useRegisterForm from "../../hooks/shared/useRegisterForm";
+import useRegisterForm from "../../hooks/auth/useRegisterForm";
 
 export const RegisterForm = () => {
   const {

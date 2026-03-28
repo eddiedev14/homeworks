@@ -1,5 +1,5 @@
+import { PageLink } from "../../components/shared/PageLink";
 import NotFoundIllustration from "/404.png";
-import { PageLink } from "../components/shared/PageLink";
 
 export const Error = () => {
   return (
