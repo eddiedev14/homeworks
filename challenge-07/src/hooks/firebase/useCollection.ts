@@ -17,7 +17,7 @@ import {
 } from "firebase/firestore";
 
 // Tipo de filtro (tupla)
-type Filter = [string, WhereFilterOp, unknown];
+export type Filter = [string, WhereFilterOp, unknown];
 
 //? Se tipa el hook con un genérico para tipado de typescript.
 export const useCollection = <T>(table: string) => {

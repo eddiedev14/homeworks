@@ -9,6 +9,7 @@ interface IAuthContext {
   register: (credentials: User) => Promise<string | null>;
   login: (credentials: UserLogin) => Promise<string | null>;
   logout: () => Promise<string | null>;
+  getUserId: () => string | undefined;
 }
 
 interface IProvider {

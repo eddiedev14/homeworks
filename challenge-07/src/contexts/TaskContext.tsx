@@ -1,12 +1,14 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, type ReactNode } from "react";
 import type { Task, TaskInput } from "../types/task.types";
+import type { Filter } from "../hooks/firebase/useCollection";
 import { useTaskState } from "../hooks/tasks/useTaskState";
 
 interface ITaskContext {
   tasks: Task[];
   selectedTask: Task | null;
   newTask: (data: TaskInput) => Promise<boolean>;
+  getAllTasks: (filters?: Filter[]) => Promise<void>;
   loading: boolean;
   error: string | null;
 }

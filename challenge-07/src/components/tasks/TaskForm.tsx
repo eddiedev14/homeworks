@@ -1,14 +1,20 @@
 import { useTaskForm } from "../../hooks/tasks/useTaskForm";
+import { CommonLoader } from "../shared/CommonLoader";
 import { Button } from "../shared/Button";
 
 export const TaskForm = () => {
   const {
     title,
     description,
+    loading,
     handleTitleChange,
     handleDescriptionChange,
     handleSubmit,
   } = useTaskForm();
+
+  if (loading) {
+    return <CommonLoader text="Creando tarea..." />;
+  }
 
   return (
     <div className="my-6 mx-6 flex flex-col gap-4">

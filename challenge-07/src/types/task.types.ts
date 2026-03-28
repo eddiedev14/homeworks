@@ -3,6 +3,7 @@ export type Task = {
   title: string;
   description: string;
   completed: boolean;
+  userID: string;
 };
 
 export type TaskInput = Omit<Task, "id">;

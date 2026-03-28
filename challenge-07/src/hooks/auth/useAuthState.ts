@@ -104,11 +104,16 @@ export default function useAuthState() {
     }
   };
 
+  const getUserId = (): string | undefined => {
+    return auth.currentUser?.uid;
+  };
+
   return {
     user,
     loading,
     register,
     login,
     logout,
+    getUserId,
   };
 }

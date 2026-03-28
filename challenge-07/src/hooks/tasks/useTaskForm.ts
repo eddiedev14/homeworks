@@ -1,12 +1,14 @@
 import { useState, type ChangeEvent, type SubmitEvent } from "react";
 import { useTaskContext } from "./useTaskContext";
+import { useAuthContext } from "../auth/useAuthContext";
 import type { TaskInput } from "../../types/task.types";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 export const useTaskForm = () => {
   //* Contexts
-  const { newTask, error } = useTaskContext();
+  const { getUserId } = useAuthContext();
+  const { newTask, loading, error } = useTaskContext();
 
   //* States
   const [title, setTitle] = useState("");
@@ -40,13 +42,14 @@ export const useTaskForm = () => {
       title,
       description,
       completed: false,
+      userID: getUserId()!,
     };
 
     const taskAdded = await newTask(task);
 
     if (taskAdded) {
       toast.success("Tarea añadida correctamente!");
-      navigate("/dashboard");
+      navigate("/tasks/Dashboard");
       return;
     }
 
@@ -58,6 +61,7 @@ export const useTaskForm = () => {
   return {
     title,
     description,
+    loading,
 
     handleTitleChange,
     handleDescriptionChange,
