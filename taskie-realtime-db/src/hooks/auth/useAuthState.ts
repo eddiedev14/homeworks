@@ -14,6 +14,7 @@ import {
 import type { User, UserLogin, UserNode, UserUI } from "../../types/user.types";
 import { getAuthErrorMessage } from "../../utils/firebaseErrors";
 import { useRealTimeCollection } from "../firebase/useRealTimeCollection";
+import { onValue } from "firebase/database";
 
 export default function useAuthState() {
   //* States
@@ -21,10 +22,12 @@ export default function useAuthState() {
   const [loading, setLoading] = useState(true);
 
   //* Custom hooks
-  const { getById, setById } = useRealTimeCollection<UserNode>("users");
+  const { getRef, setById } = useRealTimeCollection<UserNode>("users");
 
   //* Effects
   useEffect(() => {
+    let unsubscribeRTDB: (() => void) | null = null;
+
     // ? onAuthStateChanged, es un listener que se ejecuta cuando el usuario inicia sesión, cierra sesión
     // ? se recarga la página o firebase detecta que hay una sesión activa y la restaura.
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -33,16 +36,26 @@ export default function useAuthState() {
         // Obtener ID
         const uid: string = firebaseUser.uid;
 
-        // Obtener el nodo del usuario
-        const userData = await getById(uid);
+        // ? Se setea el usuario provisionalmente con información básica (sin username)
+        //* Esto se hace para evitar que la aplicación se quede sin renderizar mientras se obtiene la información del usuario desde RTDB
+        setUser({
+          email: firebaseUser.email!,
+          username: "", // temporal
+        });
 
-        if (userData) {
-          // Setear el usuario en el estado global (sin password)
-          setUser({
-            email: firebaseUser.email!,
-            username: userData.username,
-          });
-        }
+        // Escuchar cambios en tiempo real (RTDB) para obtener el username y actualizar el estado del usuario en la aplicación
+        const userRef = getRef(uid);
+
+        unsubscribeRTDB = onValue(userRef, (snapshot) => {
+          const data = snapshot.val();
+
+          if (data) {
+            setUser({
+              email: firebaseUser.email || "",
+              username: data.username,
+            });
+          }
+        });
       } else {
         setUser(null);
       }
@@ -50,7 +63,10 @@ export default function useAuthState() {
       setLoading(false);
     });
 
-    return () => unsubscribe();
+    return () => {
+      unsubscribe();
+      if (unsubscribeRTDB) unsubscribeRTDB();
+    };
   }, []);
 
   //* Functions
