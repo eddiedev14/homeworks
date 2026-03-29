@@ -1,19 +1,11 @@
-# Challenge 06: Login Page & Routes (2026-03-18)
+# Challenge 07: Taskie (Firebase) (2026-03-25)
 
-Create in react a new Demo Login Page. It should contain:
+Transform the Fake Login App to add firebase Login/Register, custom hooks and contexts. The app must contain:
 
-- Email
-- Password
-- Button to Login
-
-When the button is clicked, we are going to validate if the user is:
-
-- user@mail.com
-- password: 123
-
-1. Use Context, Providers and States to handle necessary data.
-2. Based on the last challenge, create 2 different private pages that will show each exercise on each page.
-3. Test your private routes by login and logout
-4. Show the current username when the user is logged in.
-
-> Eddie Santiago Delgado Campo - 2235060
+- Login, register and Logout with firebase
+- Routing pages: Login, Register
+- Create a new Task app to create, edit and delete tasks, and also toggle if it’s done or not
+- Use one context to handle Tasks data through pages.
+- Use one different context to handle login - Register data.
+- Use custom hooks to handle Firebase logic
+- Use a CSS library and SASS to make the project look good.
