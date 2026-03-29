@@ -1,14 +1,14 @@
 import { Header } from "../../components/shared/Header";
 import { Navbar } from "../../components/shared/NavBar";
-import { PageLink } from "../../components/shared/PageLink";
 import { TaskCard } from "../../components/tasks/TaskCard";
 import { useAuthContext } from "../../hooks/auth/useAuthContext";
 import { CommonLoader } from "../../components/shared/CommonLoader";
+import { Button } from "../../components/shared/Button";
 import { useTaskDashboard } from "../../hooks/tasks/useTaskDashboard";
 
 export const Dashboard = () => {
   const { user } = useAuthContext();
-  const { tasks, loading } = useTaskDashboard();
+  const { tasks, loading, handleNewTaskClick } = useTaskDashboard();
 
   return (
     <div className="flex flex-col items-center">
@@ -18,7 +18,12 @@ export const Dashboard = () => {
         paragraph="Desde esta página podrás gestionar todas tus tareas"
         showImage={true}
       />
-      <PageLink path="/tasks/form" text="Nueva Tarea" />
+      <Button
+        text="Nueva Tarea"
+        type="button"
+        variant="secondary"
+        onClick={handleNewTaskClick}
+      />
 
       {loading && <CommonLoader text="Obteniendo tus tareas..." />}
       {!loading && (

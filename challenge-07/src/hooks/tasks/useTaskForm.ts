@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type SubmitEvent, useEffect } from "react";
+import { useState, type ChangeEvent, type SubmitEvent } from "react";
 import { useTaskContext } from "./useTaskContext";
 import { useAuthContext } from "../auth/useAuthContext";
 import type { TaskInput } from "../../types/task.types";
@@ -23,11 +23,6 @@ export const useTaskForm = () => {
   const [description, setDescription] = useState(
     selectedTask ? selectedTask.description : "",
   );
-
-  //* Effects
-  useEffect(() => {
-    clearSelectedTask();
-  }, []);
 
   //* Hooks
   const navigate = useNavigate();
@@ -71,6 +66,7 @@ export const useTaskForm = () => {
           ? "Tarea actualizada correctamente!"
           : "Tarea añadida correctamente!",
       );
+      clearSelectedTask();
       navigate("/tasks/dashboard");
       return;
     }
