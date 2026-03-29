@@ -2,23 +2,26 @@
 import { useEffect, useState } from "react";
 
 //* Firebase
-import { auth, db } from "../../firebase/config";
+import { auth } from "../../firebase/config";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
 
 // * Types & utils
-import type { User, UserLogin, UserUI } from "../../types/user.types";
+import type { User, UserDoc, UserLogin, UserUI } from "../../types/user.types";
 import { getAuthErrorMessage } from "../../utils/firebaseErrors";
+import { useCollection } from "../firebase/useCollection";
 
 export default function useAuthState() {
   //* States
   const [user, setUser] = useState<UserUI | null>(null);
   const [loading, setLoading] = useState(true);
+
+  //* Custom hooks
+  const { getById, setById } = useCollection<UserDoc>("users");
 
   //* Effects
   useEffect(() => {
@@ -31,16 +34,14 @@ export default function useAuthState() {
         const uid: string = firebaseUser.uid;
 
         // Se busca ese usuario en la COLECCIÓN usuarios
-        const userRef = doc(db, "users", uid);
-        const docSnap = await getDoc(userRef);
-
-        if (docSnap.exists()) {
-          const data = docSnap.data() as User;
-
+        const userDoc = await getById(uid);
+        if (userDoc) {
           setUser({
             email: firebaseUser.email!,
-            username: data.username,
+            username: userDoc.username,
           });
+        } else {
+          setUser(null);
         }
       } else {
         setUser(null);
@@ -67,8 +68,7 @@ export default function useAuthState() {
       );
 
       // Ahora se guarda en la colección "users", el usuario con esa misma id (para referencias) con los datos propios
-      //? La función doc(), recibe la base de datos, nombre de la colección y id específico (uid)
-      await setDoc(doc(db, "users", userCredential.user.uid), {
+      await setById(userCredential.user.uid, {
         username,
       });
 

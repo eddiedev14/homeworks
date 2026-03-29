@@ -13,6 +13,7 @@ import {
   type DocumentData,
   type WhereFilterOp,
   getDoc,
+  setDoc,
 } from "firebase/firestore";
 
 // Tipo de filtro (tupla)
@@ -118,6 +119,28 @@ export const useCollection = <T>(table: string) => {
     }
   };
 
+  //* 2. C -> CREATE
+  const setById = async (id: string, data: T): Promise<boolean> => {
+    setIsPending(true);
+    setError(null);
+
+    try {
+      const docRef = doc(db, table, id);
+
+      await setDoc(docRef, {
+        ...data,
+        createdAt: serverTimestamp(),
+      });
+
+      setIsPending(false);
+      return true;
+    } catch {
+      setError(`Error al crear el documento en ${table} con id ${id}`);
+      setIsPending(false);
+      return false;
+    }
+  };
+
   //* 3. U -> UPDATE
   const update = async (id: string, data: DocumentData) => {
     setIsPending(true);
@@ -168,6 +191,7 @@ export const useCollection = <T>(table: string) => {
     getAll,
     getById,
     add,
+    setById,
     update,
     remove,
   };
