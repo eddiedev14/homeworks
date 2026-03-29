@@ -7,6 +7,7 @@ import {
   ref,
   remove,
   serverTimestamp,
+  set,
   update,
   type DatabaseReference,
 } from "firebase/database";
@@ -140,6 +141,27 @@ export const useRealTimeCollection = <T>(node: string) => {
     }
   };
 
+  //* 2. CREATE (con set)
+  const setById = async (id: string, data: T): Promise<boolean> => {
+    setIsPending(true);
+    setError(null);
+
+    try {
+      // ? Se obtiene la referencia de ese nodo específico, por ejemplo "tasks/task1" (así no exista, se crea)
+      const nodeRef = getRef(id);
+      await set(nodeRef, {
+        ...data,
+        createdAt: serverTimestamp(),
+      });
+      setIsPending(false);
+      return true;
+    } catch {
+      setError(`Error al guardar el nodo ${node} con id ${id}`);
+      setIsPending(false);
+      return false;
+    }
+  };
+
   //* 3. UPDATE
   // ? En este caso se implementa con update, pues se actualiza solo los campos indicados, sin afectar el resto del nodo
   // ? Set, en cambio, reemplazaría todo el nodo, por lo que se perderían los campos no incluidos en la actualización
@@ -192,9 +214,11 @@ export const useRealTimeCollection = <T>(node: string) => {
     isPending,
     error,
 
+    getRef,
     getAll,
     getById,
     add,
+    setById,
     updateNode,
     removeNode,
   };
