@@ -2,10 +2,16 @@ import type { TaskUpdate } from "../../types/task.types";
 import { useTaskContext } from "./useTaskContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
-export const useTaskCard = (taskId: string, completed: boolean) => {
+export const useTaskCard = (
+  taskId: string,
+  title: string,
+  completed: boolean,
+) => {
   //* Contexts
-  const { error, updateTask, handleSelectedTaskChange } = useTaskContext();
+  const { error, updateTask, removeTask, handleSelectedTaskChange } =
+    useTaskContext();
 
   //* Hooks
   const navigate = useNavigate();
@@ -32,8 +38,28 @@ export const useTaskCard = (taskId: string, completed: boolean) => {
     navigate("/tasks/form");
   };
 
+  const handleRemoveClick = () => {
+    Swal.fire({
+      title: `¿Deseas eliminar la tarea '${title}'?`,
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      confirmButtonColor: "#dc2626",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const taskRemoved = await removeTask(taskId);
+        if (taskRemoved) {
+          toast.success("Tarea eliminada correctamente!");
+        } else {
+          toast.error(error);
+        }
+      }
+    });
+  };
+
   return {
     handleCheckboxChange,
     handleEditClick,
+    handleRemoveClick,
   };
 };

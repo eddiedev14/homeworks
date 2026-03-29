@@ -9,7 +9,7 @@ export const useTaskState = () => {
   const [isFetched, setIsFetched] = useState(false);
 
   //* Custom hook
-  const { add, getAll, update, isPending, error } =
+  const { add, getAll, update, remove, isPending, error } =
     useCollection<TaskInput>("tasks");
 
   //* Functions
@@ -50,6 +50,18 @@ export const useTaskState = () => {
     return false;
   };
 
+  const removeTask = async (id: string): Promise<boolean> => {
+    const deleted = await remove(id);
+
+    if (deleted) {
+      // Eliminar esa task del estado (para no hacer toda la consulta de nuevo)
+      setTasks((prev) => prev.filter((task) => task.id !== id));
+      return true;
+    }
+
+    return false;
+  };
+
   const handleSelectedTaskChange = (taskId: string) => {
     const task = tasks.find((t) => t.id === taskId) || null;
     setSelectedTask(task);
@@ -71,6 +83,7 @@ export const useTaskState = () => {
     newTask,
     getAllTasks,
     updateTask,
+    removeTask,
     handleSelectedTaskChange,
     clearSelectedTask,
   };

@@ -14,6 +14,7 @@ interface ITaskContext {
   newTask: (data: TaskInput) => Promise<boolean>;
   getAllTasks: (filters?: Filter[]) => Promise<void>;
   updateTask: (id: string, data: TaskUpdate) => Promise<boolean>;
+  removeTask: (id: string) => Promise<boolean>;
   handleSelectedTaskChange: (taskId: string) => void;
   clearSelectedTask: () => void;
 }

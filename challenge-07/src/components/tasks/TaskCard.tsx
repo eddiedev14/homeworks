@@ -3,7 +3,8 @@ import type { Task } from "../../types/task.types";
 import { Button } from "../shared/Button";
 
 export const TaskCard = ({ id, title, description, completed }: Task) => {
-  const { handleCheckboxChange, handleEditClick } = useTaskCard(id, completed);
+  const { handleCheckboxChange, handleEditClick, handleRemoveClick } =
+    useTaskCard(id, title, completed);
 
   return (
     <div className="flex flex-col gap-1 p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow w-full max-w-sm">
@@ -32,7 +33,13 @@ export const TaskCard = ({ id, title, description, completed }: Task) => {
           size="md"
           onClick={handleEditClick}
         />
-        <Button text="Eliminar" type="button" variant="destructive" size="md" />
+        <Button
+          text="Eliminar"
+          type="button"
+          variant="destructive"
+          size="md"
+          onClick={handleRemoveClick}
+        />
       </div>
     </div>
   );
