@@ -2,23 +2,26 @@
 import { useEffect, useState } from "react";
 
 //* Firebase
-import { auth, db } from "../../firebase/config";
+import { auth } from "../../firebase/config";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
 
 // * Types & utils
-import type { User, UserLogin, UserUI } from "../../types/user.types";
+import type { User, UserLogin, UserNode, UserUI } from "../../types/user.types";
 import { getAuthErrorMessage } from "../../utils/firebaseErrors";
+import { useRealTimeCollection } from "../firebase/useRealTimeCollection";
 
 export default function useAuthState() {
   //* States
   const [user, setUser] = useState<UserUI | null>(null);
   const [loading, setLoading] = useState(true);
+
+  //* Custom hooks
+  const { getById, setById } = useRealTimeCollection<UserNode>("users");
 
   //* Effects
   useEffect(() => {
@@ -30,16 +33,14 @@ export default function useAuthState() {
         // Obtener ID
         const uid: string = firebaseUser.uid;
 
-        // Se busca ese usuario en la COLECCIÓN usuarios
-        const userRef = doc(db, "users", uid);
-        const docSnap = await getDoc(userRef);
+        // Obtener el nodo del usuario
+        const userData = await getById(uid);
 
-        if (docSnap.exists()) {
-          const data = docSnap.data() as User;
-
+        if (userData) {
+          // Setear el usuario en el estado global (sin password)
           setUser({
             email: firebaseUser.email!,
-            username: data.username,
+            username: userData.username,
           });
         }
       } else {
@@ -66,9 +67,8 @@ export default function useAuthState() {
         password,
       );
 
-      // Ahora se guarda en la colección "users", el usuario con esa misma id (para referencias) con los datos propios
-      //? La función doc(), recibe la base de datos, nombre de la colección y id específico (uid)
-      await setDoc(doc(db, "users", userCredential.user.uid), {
+      // Ahora se guarda la información del usuario en RTDB
+      await setById(userCredential.user.uid, {
         username,
       });
 
