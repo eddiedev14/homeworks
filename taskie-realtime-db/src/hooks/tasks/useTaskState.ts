@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Task, TaskInput, TaskUpdate } from "../../types/task.types";
-import { useCollection, type Filter } from "../firebase/useCollection";
+import { useCollection, type Filter } from "../firebase/useRealTimeCollection";
 
 export const useTaskState = () => {
   //* States

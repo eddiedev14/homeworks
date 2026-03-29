@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, type ReactNode } from "react";
 import type { Task, TaskInput, TaskUpdate } from "../types/task.types";
-import type { Filter } from "../hooks/firebase/useCollection";
+import type { Filter } from "../hooks/firebase/useRealTimeCollection";
 import { useTaskState } from "../hooks/tasks/useTaskState";
 
 interface ITaskContext {
