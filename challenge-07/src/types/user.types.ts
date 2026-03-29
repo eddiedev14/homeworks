@@ -5,5 +5,6 @@ export type User = {
   password: string;
 };
 
+export type UserDoc = Pick<User, "username">;
 export type UserLogin = Omit<User, "username">;
 export type UserUI = Omit<User, "password">;
