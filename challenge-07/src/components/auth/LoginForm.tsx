@@ -1,6 +1,7 @@
 import ProfilePicture from "/profile-picture.png";
 import useLoginForm from "../../hooks/auth/useLoginForm";
 import { Button } from "../shared/Button";
+import { PageLink } from "../shared/PageLink";
 
 export const LoginForm = () => {
   const {
@@ -21,7 +22,7 @@ export const LoginForm = () => {
         />
         <h1 className="text-2xl font-bold">Login</h1>
         <p className="font-light text-sm">
-          Inicia Sesión para practicar con los challenges
+          ¡Inicia sesión para continuar con tus pendientes!
         </p>
 
         <form
@@ -46,12 +47,16 @@ export const LoginForm = () => {
               type="password"
               id="password"
               name="password"
-              className="p-2 font-light border border-gray-300 shadow-sm rounded"
+              className="p-2 font-light border border-gray-300 shadow-sm rounded mb-2"
               value={password}
               onChange={handlePasswordChange}
             />
           </div>
           <Button type="submit" text="Iniciar Sesión" variant="primary" />
+          <span className="text-sm text-gray-800 text-center">
+            ¿No tienes una cuenta?
+            <PageLink path="/register" text="Regístrate" inline />
+          </span>
         </form>
       </section>
     </div>

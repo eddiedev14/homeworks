@@ -1,6 +1,7 @@
 import ProfilePicture from "/profile-picture.png";
 import { Button } from "../shared/Button";
 import useRegisterForm from "../../hooks/auth/useRegisterForm";
+import { PageLink } from "../shared/PageLink";
 
 export const RegisterForm = () => {
   const {
@@ -60,12 +61,16 @@ export const RegisterForm = () => {
               type="password"
               id="password"
               name="password"
-              className="p-2 font-light border border-gray-300 shadow-sm rounded"
+              className="p-2 font-light border border-gray-300 shadow-sm rounded mb-2"
               value={password}
               onChange={handlePasswordChange}
             />
           </div>
           <Button type="submit" text="Registrarse" variant="primary" />
+          <span className="text-sm text-gray-800 text-center">
+            ¿Ya tienes una cuenta?
+            <PageLink path="/login" text="Inicia sesión" inline />
+          </span>
         </form>
       </section>
     </div>

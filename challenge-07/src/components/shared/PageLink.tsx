@@ -5,6 +5,8 @@ interface Props {
   text: string;
   small?: boolean;
   bordered?: boolean;
+  inline?: boolean;
+  className?: string;
 }
 
 export const PageLink = ({
@@ -12,17 +14,33 @@ export const PageLink = ({
   text,
   small = false,
   bordered = false,
+  inline = false,
+  className = "",
 }: Props) => {
-  const baseStyles = "inline-block w-fit rounded-md transition-all font-medium";
+  // Estilo base
+  const baseStyles = inline
+    ? "text-blue-500 underline hover:text-blue-600 transition-colors font-medium"
+    : "inline-block w-fit rounded-md transition-all font-medium";
 
-  const sizeStyles = small ? "text-sm px-3 py-1.5" : "text-base px-4 py-2";
+  // Tamaño (solo para botones)
+  const sizeStyles = inline
+    ? ""
+    : small
+      ? "text-sm px-3 py-1.5"
+      : "text-base px-4 py-2";
 
-  const variantStyles = bordered
-    ? "border border-black text-black hover:bg-black hover:text-white"
-    : "text-white bg-black";
+  // Variantes (solo para botones)
+  const variantStyles = inline
+    ? ""
+    : bordered
+      ? "border border-black text-black hover:bg-black hover:text-white"
+      : "text-white bg-black";
 
   return (
-    <Link to={path} className={`${baseStyles} ${sizeStyles} ${variantStyles}`}>
+    <Link
+      to={path}
+      className={`${baseStyles} ${sizeStyles} ${variantStyles} ${className}`}
+    >
       {text}
     </Link>
   );
