@@ -29,7 +29,7 @@ export const Dashboard = () => {
       {!loading && (
         <div className="w-full flex flex-wrap justify-center my-6 gap-8">
           {tasks.map((task) => (
-            <TaskCard {...task} />
+            <TaskCard {...task} key={task.id} />
           ))}
         </div>
       )}

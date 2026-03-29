@@ -1,24 +1,29 @@
 import { useState } from "react";
 import type { Task, TaskInput, TaskUpdate } from "../../types/task.types";
-import { useCollection, type Filter } from "../firebase/useRealTimeCollection";
+import { useAuthContext } from "../auth/useAuthContext";
+import { useRealTimeCollection } from "../firebase/useRealTimeCollection";
 
 export const useTaskState = () => {
+  //* Contexts
+  const { getUserId } = useAuthContext();
+
   //* States
   const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [isFetched, setIsFetched] = useState(false);
 
   //* Custom hook
-  const { add, getAll, update, remove, isPending, error } =
-    useCollection<TaskInput>("tasks");
+  const userId = getUserId();
+  const { add, getAll, updateNode, removeNode, isPending, error } =
+    useRealTimeCollection<TaskInput>(`tasks/${userId}`);
 
   //* Functions
   const newTask = async (data: TaskInput): Promise<boolean> => {
-    const docRef = await add(data);
+    const docId = await add(data);
 
-    if (docRef) {
+    if (docId) {
       const newTask: Task = {
-        id: docRef.id,
+        id: docId,
         ...data,
       };
 
@@ -30,14 +35,14 @@ export const useTaskState = () => {
     return false;
   };
 
-  const getAllTasks = async (filters: Filter[] = []): Promise<void> => {
-    const tasks = await getAll(filters);
+  const getAllTasks = async (): Promise<void> => {
+    const tasks = await getAll();
     setTasks(tasks);
     setIsFetched(true);
   };
 
   const updateTask = async (id: string, data: TaskUpdate): Promise<boolean> => {
-    const updated = await update(id, data);
+    const updated = await updateNode(id, data);
 
     if (updated) {
       // Buscar esa task en el estado y actualizarla (para no hacer toda la consulta de nuevo)
@@ -51,7 +56,7 @@ export const useTaskState = () => {
   };
 
   const removeTask = async (id: string): Promise<boolean> => {
-    const deleted = await remove(id);
+    const deleted = await removeNode(id);
 
     if (deleted) {
       // Eliminar esa task del estado (para no hacer toda la consulta de nuevo)

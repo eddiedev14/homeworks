@@ -1,12 +1,10 @@
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { useAuthContext } from "../auth/useAuthContext";
 import { useTaskContext } from "./useTaskContext";
 import { useNavigate } from "react-router-dom";
 
 export const useTaskDashboard = () => {
   //* Contexts
-  const { getUserId } = useAuthContext();
   const { tasks, isFetched, loading, error, getAllTasks, clearSelectedTask } =
     useTaskContext();
 
@@ -19,7 +17,7 @@ export const useTaskDashboard = () => {
       //* Obtener todas las tareas de ese usario en concreto
       if (isFetched) return; // Si ya se tienen en memoria no hacerlo.
 
-      await getAllTasks([["userID", "==", getUserId()]]);
+      await getAllTasks();
       if (error) toast.error(error);
     };
 

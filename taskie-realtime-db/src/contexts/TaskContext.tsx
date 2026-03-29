@@ -1,7 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, type ReactNode } from "react";
 import type { Task, TaskInput, TaskUpdate } from "../types/task.types";
-import type { Filter } from "../hooks/firebase/useRealTimeCollection";
 import { useTaskState } from "../hooks/tasks/useTaskState";
 
 interface ITaskContext {
@@ -12,7 +11,7 @@ interface ITaskContext {
   error: string | null;
 
   newTask: (data: TaskInput) => Promise<boolean>;
-  getAllTasks: (filters?: Filter[]) => Promise<void>;
+  getAllTasks: () => Promise<void>;
   updateTask: (id: string, data: TaskUpdate) => Promise<boolean>;
   removeTask: (id: string) => Promise<boolean>;
   handleSelectedTaskChange: (taskId: string) => void;
