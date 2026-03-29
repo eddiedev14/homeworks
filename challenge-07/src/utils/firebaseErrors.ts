@@ -12,11 +12,8 @@ export const getAuthErrorMessage = (error: unknown): string => {
       case "auth/weak-password":
         return "La contraseña debe tener al menos 6 caracteres";
 
-      case "auth/user-not-found":
-        return "Usuario no encontrado";
-
-      case "auth/wrong-password":
-        return "Contraseña incorrecta";
+      case "auth/invalid-credential":
+        return "Correo o contraseña incorrectos";
 
       default:
         return "Error de autenticación";
