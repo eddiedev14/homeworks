@@ -14,11 +14,11 @@ export const useTaskState = () => {
 
   //* Functions
   const newTask = async (data: TaskInput): Promise<boolean> => {
-    const docRef = await add(data);
+    const docId = await add(data);
 
-    if (docRef) {
+    if (docId) {
       const newTask: Task = {
-        id: docRef.id,
+        id: docId,
         ...data,
       };
 

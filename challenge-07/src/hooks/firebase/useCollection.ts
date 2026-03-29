@@ -12,7 +12,6 @@ import {
   serverTimestamp,
   type DocumentData,
   type WhereFilterOp,
-  DocumentReference,
   getDoc,
 } from "firebase/firestore";
 
@@ -99,7 +98,7 @@ export const useCollection = <T>(table: string) => {
   };
 
   //* 2. C -> CREATE
-  const add = async (data: T): Promise<DocumentReference<T> | null> => {
+  const add = async (data: T): Promise<string | null> => {
     setIsPending(true);
     setError(null);
 
@@ -111,7 +110,7 @@ export const useCollection = <T>(table: string) => {
       } as DocumentData);
 
       setIsPending(false);
-      return ref as DocumentReference<T>; // Retornar la referencia
+      return ref.id; // Retornar el id del documento creado
     } catch {
       setIsPending(false);
       setError(`Error al agregar un nuevo registro en la colección ${table}`);
