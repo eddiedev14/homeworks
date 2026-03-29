@@ -1,13 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
-import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBD9EqclNgqgeB343FTYP9zdELANniXB2k",
   authDomain: "challenge-07-9f3bf.firebaseapp.com",
+  databaseURL: "https://challenge-07-9f3bf-default-rtdb.firebaseio.com/",
   projectId: "challenge-07-9f3bf",
   storageBucket: "challenge-07-9f3bf.firebasestorage.app",
   messagingSenderId: "884856095663",
@@ -17,7 +17,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const firebaseStorage = getStorage(app);
-const db = getFirestore();
+const db = getDatabase(app);
 
-export { app, auth, firebaseStorage, db };
+export { app, auth, db };
