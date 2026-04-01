@@ -1,82 +1,82 @@
 import { useState, type ChangeEvent, type SubmitEvent } from "react";
-import { useAuthContext } from "./useAuthContext";
+import { useAuth } from "./useAuth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import type { User } from "../../types/user.types";
 
 export default function useRegisterForm() {
-  //* Context
-  const { register } = useAuthContext();
+	//* Context
+	const { register } = useAuth();
 
-  //* Navigate
-  const navigate = useNavigate();
+	//* Navigate
+	const navigate = useNavigate();
 
-  //* States
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+	//* States
+	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 
-  //* Functions
-  const handleEmailChange = (
-    e: ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => {
-    setEmail(e.target.value);
-  };
+	//* Functions
+	const handleEmailChange = (
+		e: ChangeEvent<HTMLInputElement, HTMLInputElement>,
+	) => {
+		setEmail(e.target.value);
+	};
 
-  const handleUsernameChange = (
-    e: ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => {
-    setUsername(e.target.value);
-  };
+	const handleUsernameChange = (
+		e: ChangeEvent<HTMLInputElement, HTMLInputElement>,
+	) => {
+		setUsername(e.target.value);
+	};
 
-  const handlePasswordChange = (
-    e: ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => {
-    setPassword(e.target.value);
-  };
+	const handlePasswordChange = (
+		e: ChangeEvent<HTMLInputElement, HTMLInputElement>,
+	) => {
+		setPassword(e.target.value);
+	};
 
-  const handleRegister = async (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
+	const handleRegister = async (e: SubmitEvent<HTMLFormElement>) => {
+		e.preventDefault();
 
-    if (
-      email.trim() === "" ||
-      username.trim() === "" ||
-      password.trim() === ""
-    ) {
-      toast.error("Todos los campos son obligatorios");
-      return;
-    }
+		if (
+			email.trim() === "" ||
+			username.trim() === "" ||
+			password.trim() === ""
+		) {
+			toast.error("Todos los campos son obligatorios");
+			return;
+		}
 
-    // Crear objeto IUserLogin con las credenciales
-    const credentials: User = {
-      email,
-      username,
-      password,
-    };
+		// Crear objeto IUserLogin con las credenciales
+		const credentials: User = {
+			email,
+			username,
+			password,
+		};
 
-    // Llamar a la función register del context
-    const errorMessage = await register(credentials);
+		// Llamar a la función register del context
+		const errorMessage = await register(credentials);
 
-    if (!errorMessage) {
-      toast.success("¡Te has registrado correctamente!");
-      navigate("/login");
-      return;
-    }
+		if (!errorMessage) {
+			toast.success("¡Te has registrado correctamente!");
+			navigate("/login");
+			return;
+		}
 
-    // Mostrar alerta
-    toast.error(errorMessage);
-  };
+		// Mostrar alerta
+		toast.error(errorMessage);
+	};
 
-  return {
-    //* States
-    email,
-    username,
-    password,
+	return {
+		//* States
+		email,
+		username,
+		password,
 
-    //* Methods
-    handleEmailChange,
-    handleUsernameChange,
-    handlePasswordChange,
-    handleRegister,
-  };
+		//* Methods
+		handleEmailChange,
+		handleUsernameChange,
+		handlePasswordChange,
+		handleRegister,
+	};
 }

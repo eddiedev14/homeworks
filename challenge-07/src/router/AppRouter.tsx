@@ -10,12 +10,12 @@ import {
   Register,
   TaskFormPage,
 } from "../pages";
-import { useAuthContext } from "../hooks/auth/useAuthContext";
+import { useAuth } from "../hooks/auth/useAuth";
 import { Loader } from "../components/shared/PageLoader";
 
 export const AppRouter = () => {
   // * Esperar a que se compruebe si hay una sesión activa en toda la app.
-  const { loading } = useAuthContext();
+  const { loading } = useAuth();
 
   if (loading) {
     return <Loader />;

@@ -1,11 +1,11 @@
-import { useAuthContext } from "../../hooks/auth/useAuthContext";
+import { useAuth } from "../../hooks/auth/useAuth";
 import { Button } from "./Button";
 import { PageLink } from "./PageLink";
 import { toast } from "react-toastify";
 
 export const Navbar = () => {
   //* Context
-  const { logout } = useAuthContext();
+  const { logout } = useAuth();
 
   //* Handlers
   const handleLogout = () => {
