@@ -1,9 +1,9 @@
-import { LoginForm } from "../../components/auth/LoginForm";
+import { AuthForm } from "../../components/auth/AuthForm";
 
 export const Login = () => {
   return (
     <>
-      <LoginForm />
+      <AuthForm type="login" />
     </>
   );
 };

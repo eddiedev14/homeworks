@@ -1,22 +1,22 @@
 import { useState, type ChangeEvent, type SubmitEvent } from "react";
-import { useAuth } from "./useAuth";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import type { User } from "../../types/user.types";
+import { useAuth } from "./useAuth";
+import type { User, UserLogin } from "../../types/user.types";
+import { useNavigate } from "react-router-dom";
 
-export default function useRegisterForm() {
+export default function useAuthForm(type: "login" | "register") {
 	//* Context
-	const { register } = useAuth();
-
-	//* Navigate
-	const navigate = useNavigate();
+	const { login, register } = useAuth();
 
 	//* States
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
-	//* Functions
+	//* Navigate
+	const navigate = useNavigate();
+
+	//* Handlers
 	const handleEmailChange = (
 		e: ChangeEvent<HTMLInputElement, HTMLInputElement>,
 	) => {
@@ -35,9 +35,8 @@ export default function useRegisterForm() {
 		setPassword(e.target.value);
 	};
 
-	const handleRegister = async (e: SubmitEvent<HTMLFormElement>) => {
-		e.preventDefault();
-
+	// Functions
+	const handleRegister = async () => {
 		if (
 			email.trim() === "" ||
 			username.trim() === "" ||
@@ -67,6 +66,40 @@ export default function useRegisterForm() {
 		toast.error(errorMessage);
 	};
 
+	const handleLogin = async () => {
+		if (email.trim() === "" || password.trim() === "") {
+			toast.error("Todos los campos son obligatorios");
+			return;
+		}
+
+		// Crear objeto UserLogin con las credenciales
+		const credentials: UserLogin = {
+			email,
+			password,
+		};
+
+		// Llamar a la función login del context
+		const errorMessage = await login(credentials);
+
+		if (!errorMessage) {
+			toast.success("¡Sesión iniciada correctamente!");
+			return;
+		}
+
+		// Mostrar alerta
+		toast.error(errorMessage);
+	};
+
+	const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		if (type === "login") {
+			handleLogin();
+		} else {
+			handleRegister();
+		}
+	};
+
 	return {
 		//* States
 		email,
@@ -77,6 +110,6 @@ export default function useRegisterForm() {
 		handleEmailChange,
 		handleUsernameChange,
 		handlePasswordChange,
-		handleRegister,
+		handleSubmit,
 	};
 }

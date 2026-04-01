@@ -1,16 +1,22 @@
 import ProfilePicture from "/profile-picture.png";
-import useLoginForm from "../../hooks/auth/useLoginForm";
 import { Button } from "../shared/Button";
 import { PageLink } from "../shared/PageLink";
+import useAuthForm from "../../hooks/auth/useAuthForm";
 
-export const LoginForm = () => {
+interface Props {
+  type: "login" | "register";
+}
+
+export const AuthForm = ({ type }: Props) => {
   const {
     email,
+    username,
     password,
     handleEmailChange,
+    handleUsernameChange,
     handlePasswordChange,
-    handleLogin,
-  } = useLoginForm();
+    handleSubmit,
+  } = useAuthForm(type);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -20,14 +26,18 @@ export const LoginForm = () => {
           alt="Profile Picture"
           className="object-cover size-32"
         />
-        <h1 className="text-2xl font-bold">Login</h1>
-        <p className="font-light text-sm">
-          ¡Inicia sesión para continuar con tus pendientes!
+        <h1 className="text-2xl font-bold">
+          {type === "login" ? "Iniciar sesión" : "Registrarse"}
+        </h1>
+        <p className="font-light text-sm text-center">
+          {type === "login"
+            ? "¡Bienvenido de nuevo! Por favor, ingresa tus credenciales para iniciar sesión."
+            : "¡Únete a nuestra comunidad! Completa el formulario para crear tu cuenta."}
         </p>
 
         <form
           className="w-full mt-2 flex flex-col gap-2 *:flex *:flex-col *:gap-1"
-          onSubmit={handleLogin}
+          onSubmit={handleSubmit}
         >
           <div>
             <label htmlFor="email">Email</label>
@@ -41,6 +51,20 @@ export const LoginForm = () => {
             />
           </div>
 
+          {type === "register" && (
+            <div>
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                className="p-2 font-light border border-gray-300 shadow rounded"
+                value={username}
+                onChange={handleUsernameChange}
+              />
+            </div>
+          )}
+
           <div>
             <label htmlFor="password">Password</label>
             <input
@@ -52,10 +76,17 @@ export const LoginForm = () => {
               onChange={handlePasswordChange}
             />
           </div>
-          <Button type="submit" text="Iniciar Sesión" variant="primary" />
+          <Button type="submit" text="Registrarse" variant="primary" />
           <span className="text-sm text-gray-800 text-center">
-            ¿No tienes una cuenta?
-            <PageLink path="/register" text="Regístrate" inline />
+            {type === "login"
+              ? "¿No tienes una cuenta? "
+              : "¿Ya tienes una cuenta? "}
+
+            {type === "login" ? (
+              <PageLink path="/register" text="Regístrate" inline />
+            ) : (
+              <PageLink path="/login" text="Inicia sesión" inline />
+            )}
           </span>
         </form>
       </section>

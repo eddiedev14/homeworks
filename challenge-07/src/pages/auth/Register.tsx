@@ -1,9 +1,9 @@
-import { RegisterForm } from "../../components/auth/RegisterForm";
+import { AuthForm } from "../../components/auth/AuthForm";
 
 export const Register = () => {
   return (
     <>
-      <RegisterForm />
+      <AuthForm type="register" />
     </>
   );
 };
