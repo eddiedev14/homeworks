@@ -76,7 +76,11 @@ export const AuthForm = ({ type }: Props) => {
               onChange={handlePasswordChange}
             />
           </div>
-          <Button type="submit" text="Registrarse" variant="primary" />
+          <Button
+            type="submit"
+            text={type === "login" ? "Iniciar Sesión" : "Registrarse"}
+            variant="primary"
+          />
           <span className="text-sm text-gray-800 text-center">
             {type === "login"
               ? "¿No tienes una cuenta? "
