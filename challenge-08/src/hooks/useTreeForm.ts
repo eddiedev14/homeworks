@@ -7,16 +7,14 @@ export const useTreeForm = () => {
   const [number, setNumber] = useState("");
 
   //* Contexts
-  const { appendValue } = useTree();
+  const { tree, appendValue } = useTree();
 
   //* Handlers
   const handleNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNumber(e.target.value);
   };
 
-  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleAction = (action: "append" | "check") => {
     // Validate if the input is empty
     if (number.trim() === "") {
       toast.error("El campo no puede estar vacío.");
@@ -29,7 +27,16 @@ export const useTreeForm = () => {
       return;
     }
 
-    // TODO: Validate if the number is already in the tree
+    // Validate if the number is already in the tree
+    if (tree.contains(Number(number))) {
+      if (action === "check") {
+        toast.success(`El número ${number} sí está en el árbol.`);
+      } else {
+        toast.error(`El número ${number} ya está en el árbol.`);
+      }
+
+      return;
+    }
 
     // Append the number to the tree
     appendValue(Number(number));
@@ -40,6 +47,6 @@ export const useTreeForm = () => {
   return {
     number,
     handleNumberChange,
-    handleSubmit,
+    handleAction,
   };
 };

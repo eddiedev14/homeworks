@@ -37,6 +37,28 @@ export default class BinaryTree {
     }
   }
 
+  contains(valor: number) {
+    // Empezar la búsqueda desde la raíz
+    let actual = this.raiz;
+
+    // Recorrer el árbol hasta encontrar el valor o llegar a un nodo nulo
+    while (actual !== null) {
+      // Si el valor es igual al nodo actual, se encontró el valor
+      if (valor === actual.valor) return true;
+
+      // Si el valor es menor, ir a la izquierda
+      if (valor < actual.valor) {
+        actual = actual.izquierda;
+      } else {
+        // Si el valor es mayor, ir a la derecha
+        actual = actual.derecha;
+      }
+    }
+
+    // Si se llega a un nodo nulo, el valor no está en el árbol
+    return false;
+  }
+
   // N-L-R
   printPreOrder(): string {
     // Array para almacenar los valores en el orden correcto

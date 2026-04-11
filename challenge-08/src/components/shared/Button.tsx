@@ -7,7 +7,7 @@ interface Props {
 }
 
 const baseStyles =
-  "w-auto font-semibold rounded-md cursor-pointer transition-all border";
+  "font-semibold rounded-md cursor-pointer transition-all border";
 
 const variantStyles = {
   primary: "bg-sky-500 text-white hover:bg-sky-700",
