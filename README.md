@@ -1,15 +1,5 @@
-# Repositorio de Tareas y Actividades - Estructuras de Datos II
+# Challenge 09: Sidebar (2026-04-08)
 
-Este es el repositorio que contiene todas las actividades y tareas propuestas en el curso de Estructuras de Datos II para el semestre 2026-01. Cada uno de los ejercicios se encuentran contenidos en las ramas (branches) del repositorio actual:
-
-- **📚 Branch _"tareas"_**: Contiene todas las tareas asignadas durante el curso y su respectiva solución
-- **🎯 Branch _"challenges"_**: Contiene todos los retos/challenges asignados durante el curso a fin de reforzar conocimientos y ponerse a prueba
-- **🎯 Branch _"practicas"_**: Contiene todas las practicas y ejercicios prácticos realizados durante la clase a fin de aprender nuevos conceptos o reforzar los existentes. Incluye repaso independiente
-
-## 📌 Changelog
-
-| Fecha      | Descripción                                     | Rama afectada |
-| ---------- | ----------------------------------------------- | ------------- |
-| 2026-02-04 | Creación inicial del proyecto y estructura base | main          |
-
-> Eddie Santiago Delgado Campo (2235060)
+1. Create a new project in React
+2. Fill a N-ary tree with some menus and submenus – Every Menu item will have title, a link and a component.
+3. Create a sidebar menu in screen by printing the previous tree created.
