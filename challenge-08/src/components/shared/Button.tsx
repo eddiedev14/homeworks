@@ -2,29 +2,37 @@ interface Props {
   text: string;
   type: "submit" | "button";
   variant?: "primary" | "secondary" | "destructive";
+  size?: "sm" | "md" | "lg";
   onClick?: () => void;
 }
 
 const baseStyles =
-  "w-auto py-2 font-semibold rounded-md cursor-pointer transition-all border";
+  "w-auto font-semibold rounded-md cursor-pointer transition-all border";
 
 const variantStyles = {
-  primary: "bg-black text-white hover:bg-green-700",
-  secondary: "bg-sky-500 text-white hover:bg-sky-700",
+  primary: "bg-sky-500 text-white hover:bg-sky-700",
+  secondary: "text-black border border-gray-300 hover:bg-gray-200",
   destructive: "bg-red-500 text-white border-red-500 hover:bg-red-600",
+};
+
+const sizeStyles = {
+  sm: "px-2 py-1 text-sm",
+  md: "px-4 py-2 text-base",
+  lg: "px-6 py-3 text-lg",
 };
 
 export const Button = ({
   text,
   type,
   variant = "secondary",
+  size = "md",
   onClick,
 }: Props) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`${baseStyles} ${variantStyles[variant]}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]}`}
     >
       {text}
     </button>

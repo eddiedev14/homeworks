@@ -38,33 +38,61 @@ export default class BinaryTree {
   }
 
   // N-L-R
-  preOrder(nodo: Node | null) {
-    if (!nodo) return;
+  printPreOrder(): string {
+    // Array para almacenar los valores en el orden correcto
+    const result: string[] = [];
 
-    // Recursividad...
-    console.log(nodo.valor);
-    this.preOrder(nodo.izquierda);
-    this.preOrder(nodo.derecha);
+    // Función recursiva para recorrer el árbol en preorden
+    const preOrder = (nodo: Node | null) => {
+      if (!nodo) return;
+
+      result.push(String(nodo.valor));
+      preOrder(nodo.izquierda);
+      preOrder(nodo.derecha);
+    };
+
+    // Empezar el recorrido desde la raíz
+    preOrder(this.raiz);
+    return result.join(" ➟ ");
   }
 
   // L-N-R
-  inOrder(nodo: Node | null) {
-    if (!nodo) return;
+  printInOrder(): string {
+    // Array para almacenar los valores en el orden correcto
+    const result: string[] = [];
 
-    // Recursividad...
-    this.inOrder(nodo.izquierda);
-    console.log(nodo.valor);
-    this.inOrder(nodo.derecha);
+    // Función recursiva para recorrer el árbol en inorder
+    const inOrder = (nodo: Node | null) => {
+      if (!nodo) return;
+
+      // Recursividad...
+      inOrder(nodo.izquierda);
+      result.push(String(nodo.valor));
+      inOrder(nodo.derecha);
+    };
+
+    // Empezar el recorrido desde la raíz
+    inOrder(this.raiz);
+    return result.join(" ➟ ");
   }
 
   // L-R-N
-  postOrder(nodo: Node | null) {
-    if (!nodo) return;
+  printPostOrder(): string {
+    // Array para almacenar los valores en el orden correcto
+    const result: string[] = [];
 
-    // Recursividad...
-    this.postOrder(nodo.izquierda);
-    this.postOrder(nodo.derecha);
-    console.log(nodo.valor);
+    // Función recursiva para recorrer el árbol en postorden
+    const postOrder = (nodo: Node | null) => {
+      if (!nodo) return;
+
+      postOrder(nodo.izquierda);
+      postOrder(nodo.derecha);
+      result.push(String(nodo.valor));
+    };
+
+    // Empezar el recorrido desde la raíz
+    postOrder(this.raiz);
+    return result.join(" ➟ ");
   }
 
   //* Método para clonar el árbol binario

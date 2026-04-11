@@ -5,7 +5,12 @@ import { useTreeState } from "../hooks/useTreeState";
 
 interface ITreeContext {
   tree: BinaryTree;
+  order: string;
+
   appendValue: (value: number) => void;
+  handlePreorder: () => void;
+  handleInorder: () => void;
+  handlePostorder: () => void;
 }
 
 interface IProvider {

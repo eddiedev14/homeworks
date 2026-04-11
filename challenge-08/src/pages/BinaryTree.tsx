@@ -1,6 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import { Header } from "../components/shared/Header";
 import { TreeForm } from "../components/TreeForm";
+import { TreePrint } from "../components/TreePrint";
 import { D3Tree } from "../components/D3Tree";
 
 export const BinaryTree = () => {
@@ -14,6 +15,7 @@ export const BinaryTree = () => {
       />
 
       <TreeForm />
+      <TreePrint />
       <D3Tree />
     </>
   );
