@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import { TaskContextProvider } from "../contexts/TaskContext";
+import { ExplorerContextProvider } from "../contexts/ExplorerContext";
 
 //? Se crea un controlador en concreto para gestionar que elementos están dentro de ese provider
-export const TaskRoute = () => {
+export const ExplorerRoute = () => {
   return (
-    <TaskContextProvider>
+    <ExplorerContextProvider>
       <Outlet />
-    </TaskContextProvider>
+    </ExplorerContextProvider>
   );
 };

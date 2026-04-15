@@ -1,12 +1,12 @@
 //? Este hook debe ser creado porque el contexto puede ser null según el tipado.
 import { useContext } from "react";
-import { TaskContext } from "../../contexts/TaskContext";
+import { ExplorerContext } from "../../contexts/ExplorerContext";
 
-export const useTaskContext = () => {
-  const context = useContext(TaskContext);
+export const useExplorer = () => {
+  const context = useContext(ExplorerContext);
 
   if (!context) {
-    throw new Error("useTaskContext must be used inside AuthProvider");
+    throw new Error("useExplorer must be used inside ExplorerContextProvider");
   }
 
   // Se retorna el contexto con el tipado correcto (ya no habría null)

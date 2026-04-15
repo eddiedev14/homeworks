@@ -10,7 +10,7 @@ const baseStyles =
   "w-auto font-semibold rounded-md cursor-pointer transition-all border";
 
 const variantStyles = {
-  primary: "bg-black text-white hover:bg-green-700",
+  primary: "bg-black text-white hover:bg-white hover:text-black",
   secondary: "bg-sky-500 text-white hover:bg-sky-700",
   destructive: "bg-red-500 text-white border-red-500 hover:bg-red-600",
 };

@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { GuestOnlyRoute } from "./GuestOnlyRoute";
-import { TaskRoute } from "./TaskRoute";
+import { ExplorerRoute } from "./ExplorerRoute";
 import {
   Home,
   Login,
   Dashboard,
   Error,
   Register,
-  TaskFormPage,
+  ExplorerFormPage,
 } from "../pages";
 import { useAuth } from "../hooks/auth/useAuth";
 import { Loader } from "../components/shared/PageLoader";
@@ -35,9 +35,9 @@ export const AppRouter = () => {
       {/* Rutas Privadas */}
       <Route element={<PrivateRoute />}>
         {/* Tasks */}
-        <Route path="/tasks" element={<TaskRoute />}>
-          <Route path="/tasks/dashboard" element={<Dashboard />} />
-          <Route path="/tasks/form" element={<TaskFormPage />} />
+        <Route path="/explorer" element={<ExplorerRoute />}>
+          <Route path="/explorer" element={<Dashboard />} />
+          <Route path="/explorer/form" element={<ExplorerFormPage />} />
         </Route>
       </Route>
 
