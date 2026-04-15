@@ -54,6 +54,9 @@ export const useExplorerState = () => {
 
   // ? Insertar un nuevo nodo en Firestore y actualizar el árbol
   const newNode = async (data: NodeInput): Promise<boolean> => {
+    // Si no esta logueado no deberá de permitir agregar
+    if (!getUserId()) return false;
+
     const docId = await add(data);
     if (!docId) return false;
     await getAllNodes();
