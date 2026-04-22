@@ -4,8 +4,8 @@ import type IPerson from "../interfaces/person.interface";
 type GraphNode = IPerson | ICity;
 
 export default class Graph {
-  private people: IPerson[];
-  private cities: ICity[];
+  public people: IPerson[];
+  public cities: ICity[];
   //? Se usa map para que la key pueda ser un objeto IPerson o ICity directamente...
   private adjList: Map<GraphNode, GraphNode[]>;
 
@@ -16,13 +16,18 @@ export default class Graph {
   }
 
   //* Methods
-  addPerson(node: IPerson, city: IPerson) {
+  addPerson(node: IPerson, city: ICity) {
     this.people.push(node);
     //? Como se esta usando Map, para agregar un nuevo elemento se usa set...
     this.adjList.set(node, []);
 
     // Ahora se añade la relación directamente con la ciudad
     this.addEdge(node, city);
+  }
+
+  addCity(node: ICity) {
+    this.cities.push(node);
+    this.adjList.set(node, []);
   }
 
   addEdge(node1: GraphNode, node2: GraphNode) {
@@ -37,6 +42,10 @@ export default class Graph {
       this.people.find((person) => person === node) ||
       this.cities.find((city) => city === node)
     );
+  }
+
+  searchCity(cityName: string) {
+    return this.cities.find((city) => city.name === cityName);
   }
 
   getAdjacencyList(node: GraphNode) {

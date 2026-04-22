@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import { GraphForm } from "./components/GraphForm";
 import { GraphSearch } from "./components/GraphSearch";
 import { Header } from "./components/shared/Header";
@@ -5,6 +6,8 @@ import { Header } from "./components/shared/Header";
 export const App = () => {
   return (
     <>
+      <ToastContainer />
+
       <Header
         title="Challenge 10"
         paragraph="¡Crea y visualiza tu grafo de ciudades y amigos!"

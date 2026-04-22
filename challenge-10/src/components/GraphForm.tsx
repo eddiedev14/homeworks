@@ -1,12 +1,28 @@
+import { useGraph } from "../hooks/useGraph";
 import { useGraphForm } from "../hooks/useGraphForm";
 import { Button } from "./shared/Button";
 
 export const GraphForm = () => {
+  //* Context
+  const graph = useGraph();
+
   //* Custom hooks
-  const { type, handleTypeChange } = useGraphForm();
+  const {
+    type,
+    name,
+    age,
+    cityRelation,
+    cityName,
+    handleTypeChange,
+    handleNameChange,
+    handleAgeChange,
+    handleCityRelation,
+    handleCityName,
+    handleSubmit,
+  } = useGraphForm();
 
   return (
-    <form className="w-full flex flex-col gap-4">
+    <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
       <h2 className="text-2xl font-bold">Agregar un Nodo (Persona o Ciudad)</h2>
       <div className="flex flex-col gap-2">
         <label htmlFor="type" className="font-medium">
@@ -16,6 +32,7 @@ export const GraphForm = () => {
           name="type"
           id="type"
           className="p-2 font-light border border-gray-300 shadow-sm rounded"
+          value={type}
           onChange={handleTypeChange}
         >
           <option value="person">Persona</option>
@@ -34,6 +51,8 @@ export const GraphForm = () => {
               type="text"
               id="name"
               className="p-2 font-light border border-gray-300 shadow-sm rounded"
+              value={name}
+              onChange={handleNameChange}
             />
           </div>
 
@@ -42,9 +61,11 @@ export const GraphForm = () => {
               Edad:
             </label>
             <input
-              type="text"
+              type="number"
               id="age"
               className="p-2 font-light border border-gray-300 shadow-sm rounded"
+              value={age}
+              onChange={handleAgeChange}
             />
           </div>
 
@@ -56,7 +77,13 @@ export const GraphForm = () => {
               name="city-relation"
               id="city-relation"
               className="p-2 font-light border border-gray-300 shadow-sm rounded"
-            ></select>
+              value={cityRelation}
+              onChange={handleCityRelation}
+            >
+              {graph.cities.map((city) => (
+                <option key={city.name}>{city.name}</option>
+              ))}
+            </select>
           </div>
         </>
       )}
@@ -71,12 +98,14 @@ export const GraphForm = () => {
             type="text"
             id="city"
             className="p-2 font-light border border-gray-300 shadow-sm rounded"
+            value={cityName}
+            onChange={handleCityName}
           />
         </div>
       )}
 
       <div className="w-full flex gap-2 [&>button]:w-full">
-        <Button text="Agregar" type="button" variant="primary" />
+        <Button text="Agregar" type="submit" variant="primary" />
       </div>
     </form>
   );
