@@ -1,7 +1,8 @@
 import { ToastContainer } from "react-toastify";
+import { Header } from "./components/shared/Header";
 import { GraphForm } from "./components/GraphForm";
 import { GraphSearch } from "./components/GraphSearch";
-import { Header } from "./components/shared/Header";
+import { GraphView } from "./components/GraphView";
 
 export const App = () => {
   return (
@@ -19,6 +20,7 @@ export const App = () => {
           <hr />
           <GraphSearch />
         </div>
+        <GraphView />
       </div>
     </>
   );

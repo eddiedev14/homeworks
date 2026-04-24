@@ -60,6 +60,7 @@ export const useGraphForm = () => {
     // Agregar nodo
     if (type === "person") {
       const person: IPerson = {
+        id: crypto.randomUUID(), // Generar UUID automáticamente
         name,
         age: Number(age),
       };
@@ -69,6 +70,7 @@ export const useGraphForm = () => {
       addPerson(person, cityNode);
     } else {
       const city: ICity = {
+        id: crypto.randomUUID(), // Generar UUID automáticamente
         name: cityName,
       };
 
