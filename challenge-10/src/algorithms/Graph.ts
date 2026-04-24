@@ -1,13 +1,13 @@
 import type ICity from "../interfaces/city.interface";
 import type IPerson from "../interfaces/person.interface";
 
-type GraphNode = IPerson | ICity;
+export type GraphNode = IPerson | ICity;
 
 export default class Graph {
   public people: IPerson[];
   public cities: ICity[];
   //? Se usa map para que la key pueda ser un objeto IPerson o ICity directamente...
-  private adjList: Map<GraphNode, GraphNode[]>;
+  public adjList: Map<GraphNode, GraphNode[]>;
 
   constructor() {
     this.people = [];
@@ -30,13 +30,13 @@ export default class Graph {
     this.adjList.set(node, []);
   }
 
-  addEdge(node1: GraphNode, node2: GraphNode) {
+  private addEdge(node1: GraphNode, node2: GraphNode) {
     //? Como se esta usando Map, para agregar un nuevo elemento se usa get...
     this.adjList.get(node1).push(node2);
     this.adjList.get(node2).push(node1);
   }
 
-  searchNode(node: GraphNode) {
+  private searchNode(node: GraphNode) {
     if (!this.people.length && !this.cities.length) return false;
     return (
       this.people.find((person) => person === node) ||

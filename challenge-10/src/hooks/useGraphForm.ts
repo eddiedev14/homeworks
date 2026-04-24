@@ -8,7 +8,7 @@ type NodeType = "person" | "city";
 
 export const useGraphForm = () => {
   //* Context
-  const graph = useGraph();
+  const { graph, addCity, addPerson } = useGraph();
 
   //* States
   const [type, setType] = useState<NodeType>("person");
@@ -54,6 +54,7 @@ export const useGraphForm = () => {
       (type === "city" && cityName.trim() === "")
     ) {
       toast.error("¡Todos los campos son obligatorios!");
+      return;
     }
 
     // Agregar nodo
@@ -65,19 +66,19 @@ export const useGraphForm = () => {
 
       // Buscar ciudad por el cityName
       const cityNode = graph.searchCity(cityRelation);
-      graph.addPerson(person, cityNode);
+      addPerson(person, cityNode);
     } else {
       const city: ICity = {
         name: cityName,
       };
 
-      graph.addCity(city);
+      addCity(city);
     }
 
     toast.success(
       type === "person"
         ? "¡Persona agregada correctamente!"
-        : "¡Ciudad agregada correctamente!"
+        : "¡Ciudad agregada correctamente!",
     );
 
     // Resetear inputs

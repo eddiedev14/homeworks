@@ -4,7 +4,7 @@ import { Button } from "./shared/Button";
 
 export const GraphForm = () => {
   //* Context
-  const graph = useGraph();
+  const { graph } = useGraph();
 
   //* Custom hooks
   const {
@@ -80,8 +80,10 @@ export const GraphForm = () => {
               value={cityRelation}
               onChange={handleCityRelation}
             >
+              <option value="">Seleccione una ciudad</option>
+
               {graph.cities.map((city) => (
-                <option key={city.name}>{city.name}</option>
+                <option key={city.name} value={city.name}>{city.name}</option>
               ))}
             </select>
           </div>
