@@ -1,7 +1,7 @@
 interface Props {
   text: string;
   type: "submit" | "button";
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "gray";
   size?: "sm" | "md" | "lg";
   onClick?: () => void;
 }
@@ -10,8 +10,10 @@ const baseStyles =
   "font-semibold rounded-md cursor-pointer transition-all border";
 
 const variantStyles = {
-  primary: "border border-sky-500 text-white hover:bg-sky-500",
-  secondary: "text-black border border-gray-300 hover:bg-gray-200",
+  primary:
+    "bg-blue-500 text-white transition-all hover:bg-sky-700 hover:translate-y-[-2px]",
+  secondary: "border border-blue-500 text-white hover:bg-sky-500",
+  gray: "text-gray-700 hover:bg-gray-200 hover:translate-y-[-2px]",
 };
 
 const sizeStyles = {

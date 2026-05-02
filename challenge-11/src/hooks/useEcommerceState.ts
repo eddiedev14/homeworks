@@ -4,7 +4,7 @@ import { mockProducts } from "../data/products.mock.data";
 
 export const useEcommerceState = () => {
   //* States
-  const [products] = useState(mockProducts);
+  const [products, setProducts] = useState(mockProducts);
 
   const [trie] = useState(() => {
     const trie = new Trie();
@@ -17,8 +17,17 @@ export const useEcommerceState = () => {
     return trie;
   });
 
+  //* Functions
+  const addProduct = (name: string, popularity: number) => {
+    const newProduct = { name, popularity };
+    setProducts((prevProducts) => [...prevProducts, newProduct]);
+    trie.insert(name);
+  };
+
   return {
     products,
     trie,
+
+    addProduct,
   };
 };
