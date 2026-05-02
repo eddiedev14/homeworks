@@ -1,15 +1,31 @@
-# Repositorio de Tareas y Actividades - Estructuras de Datos II
+# Challenge 11: Smart Search Engine (2026-04-29)
 
-Este es el repositorio que contiene todas las actividades y tareas propuestas en el curso de Estructuras de Datos II para el semestre 2026-01. Cada uno de los ejercicios se encuentran contenidos en las ramas (branches) del repositorio actual:
+1. Create a Smart search engine + Top results:
+   - Save products in a Trie
+   - Allow searching by prefix
+   - Use a Heap to return the Top K most popular
+2. Each product has:
 
-- **📚 Branch _"tareas"_**: Contiene todas las tareas asignadas durante el curso y su respectiva solución
-- **🎯 Branch _"challenges"_**: Contiene todos los retos/challenges asignados durante el curso a fin de reforzar conocimientos y ponerse a prueba
-- **🎯 Branch _"practicas"_**: Contiene todas las practicas y ejercicios prácticos realizados durante la clase a fin de aprender nuevos conceptos o reforzar los existentes. Incluye repaso independiente
+```typescript
+   {
+        name: "air max",
+        popularity: 95
+   }
+```
 
-## 📌 Changelog
+Example:
 
-| Fecha      | Descripción                                     | Rama afectada |
-| ---------- | ----------------------------------------------- | ------------- |
-| 2026-02-04 | Creación inicial del proyecto y estructura base | main          |
+```typescript
+insert("air max", 90);
+insert("air force", 95);
+insert("air jordan", 85);
+insert("adidas boost", 80);
 
-> Eddie Santiago Delgado Campo (2235060)
+searchTopK("air", 2):
+/*
+[
+    { name: "air force", popularity: 95 },
+    { name: "air max", popularity: 90 }
+]
+*/
+```
