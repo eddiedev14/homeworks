@@ -1,5 +1,6 @@
-import { SearchForm } from "./components/ecommerce/SearchForm";
 import { Header } from "./components/shared/Header";
+import { SearchForm } from "./components/ecommerce/SearchForm";
+import { ProductList } from "./components/ecommerce/ProductList";
 
 export const App = () => {
   return (
@@ -10,6 +11,7 @@ export const App = () => {
       />
 
       <SearchForm />
+      <ProductList />
     </>
   );
 };

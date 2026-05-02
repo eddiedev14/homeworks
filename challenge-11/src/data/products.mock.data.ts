@@ -1,4 +1,4 @@
-export const products = [
+export const mockProducts = [
   { name: "air max", popularity: 95 },
   { name: "air force", popularity: 90 },
   { name: "air jordan", popularity: 85 },
