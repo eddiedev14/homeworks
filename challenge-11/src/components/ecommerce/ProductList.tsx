@@ -3,7 +3,7 @@ import { ProductCard } from "./ProductCard";
 import { SearchForm } from "./SearchForm";
 
 export const ProductList = () => {
-  const { products } = useEcommerce();
+  const { products, filteredProducts, isSearched } = useEcommerce();
 
   return (
     <section className="w-full mx-auto mt-6">
@@ -13,9 +13,20 @@ export const ProductList = () => {
       </p>
       <SearchForm />
       <div className="grid grid-cols-3 gap-4 mt-4">
-        {products.map(({ name, popularity }, index) => (
-          <ProductCard key={index} name={name} popularity={popularity} />
-        ))}
+        {isSearched &&
+          filteredProducts.map(({ name, popularity }, index) => (
+            <ProductCard
+              key={index}
+              name={name}
+              popularity={popularity}
+              top={index + 1}
+            />
+          ))}
+
+        {!isSearched &&
+          products.map(({ name, popularity }, index) => (
+            <ProductCard key={index} name={name} popularity={popularity} />
+          ))}
       </div>
     </section>
   );

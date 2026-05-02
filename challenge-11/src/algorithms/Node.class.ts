@@ -1,11 +1,14 @@
+import type { IProduct } from "../interfaces/product.interface";
+
 export default class TrieNode {
-  value: string | null; //? El valor del nodo, en este caso, sería el nombre del producto
   isEndOfWord: boolean;
   children: Record<string, TrieNode>;
+  //? Se toma como array porque podrían haber varios productos con el mismo nombre, pero diferente popularidad.
+  products: IProduct[];
 
-  constructor(value: string | null) {
-    this.value = value;
+  constructor() {
     this.isEndOfWord = false;
     this.children = {};
+    this.products = [];
   }
 }

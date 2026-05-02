@@ -1,20 +1,21 @@
+import type { IProduct } from "../interfaces/product.interface";
 import TrieNode from "./Node.class";
 
 export default class Trie {
   private root: TrieNode;
 
   constructor() {
-    this.root = new TrieNode(null);
+    this.root = new TrieNode(); // Nodo raíz
   }
 
-  // Inserta una palabra en el Trie
-  insert(word: string): void {
+  // Inserta un producto en el Trie
+  insert(product: IProduct): void {
     let current = this.root;
 
-    for (const char of word) {
+    for (const char of product.name.toLowerCase()) {
       // Si no existe el nodo hijo para este caracter
       if (!current.children[char]) {
-        current.children[char] = new TrieNode(char);
+        current.children[char] = new TrieNode();
       }
 
       // Avanza al nodo hijo
@@ -23,14 +24,17 @@ export default class Trie {
 
     // Marca el nodo final de la palabra
     current.isEndOfWord = true;
+
+    // Guarda el producto (IProduct)
+    current.products.push(product);
   }
 
   // Busca una palabra en el Trie (con prefijo)
-  searchByPrefix(prefix: string): string[] {
+  searchByPrefix(prefix: string): IProduct[] {
     let current = this.root;
 
     //* Se recorre el prefijo
-    for (const char of prefix) {
+    for (const char of prefix.toLowerCase()) {
       // Si no existe el nodo hijo para este caracter, no hay palabras con ese prefijo en el Trie
       if (!current.children[char]) {
         return [];
@@ -41,22 +45,21 @@ export default class Trie {
     }
 
     // Recolectar todas las palabras que comienzan con el prefijo
-    const words: string[] = [];
-    this.collectWords(current, prefix, words);
-    return words;
+    const results: IProduct[] = [];
+    this.collectProducts(current, results);
+    return results;
   }
 
-  //* Helper para recolectar palabras a partir de un nodo dado (recursividad)
-  private collectWords(node: TrieNode, word: string, results: string[]): void {
-    // Si es fin de palabra
+  //* Helper para recolectar productos a partir de un nodo dado (recursividad)
+  private collectProducts(node: TrieNode, results: IProduct[]): void {
+    // Si es fin de palabra agregar sus productos
     if (node.isEndOfWord) {
-      results.push(word);
+      results.push(...node.products);
     }
 
     // Recorrer hijos
     for (const char in node.children) {
-      // Se le va agregando el caracter al prefijo para formar la palabra completa
-      this.collectWords(node.children[char], word + char, results);
+      this.collectProducts(node.children[char], results);
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Button } from "../shared/Button";
 import { useProductForm } from "../../hooks/useProductForm";
+import { useEcommerce } from "../../hooks/useEcommerce";
 
 export const ProductForm = () => {
   const {
@@ -9,6 +10,8 @@ export const ProductForm = () => {
     handlePopularityChange,
     handleSubmit,
   } = useProductForm();
+
+  const { resetQuery } = useEcommerce();
 
   return (
     <form
@@ -42,7 +45,12 @@ export const ProductForm = () => {
       </div>
       <div className="flex flex-col gap-4">
         <Button text="Agregar Producto" type="submit" variant="primary" />
-        <Button text="Resetear Búsqueda" type="button" variant="gray" />
+        <Button
+          text="Resetear Búsqueda"
+          type="button"
+          variant="gray"
+          onClick={resetQuery}
+        />
       </div>
     </form>
   );

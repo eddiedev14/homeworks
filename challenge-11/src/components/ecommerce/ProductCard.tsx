@@ -1,9 +1,13 @@
-import type { IProduct } from "../../interfaces/product.interface";
+interface ProductCardProps {
+  name: string;
+  popularity: number;
+  top?: number;
+}
 
-export const ProductCard = ({ name, popularity }: IProduct) => {
+export const ProductCard = ({ name, popularity, top }: ProductCardProps) => {
   return (
     <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-200 shadow transition-transform hover:scale-105 relative">
-      <div className="flex flex-col gap-1">
+      <div className="w-full flex flex-col gap-1 relative">
         <span className="bg-blue-500 text-white w-min px-2 py-2 rounded-full">
           🏷️
         </span>
@@ -11,6 +15,11 @@ export const ProductCard = ({ name, popularity }: IProduct) => {
         <span className="border border-blue-500 w-fit text-xs font-medium px-2 py-1 rounded-full">
           Popularidad: {popularity}
         </span>
+        {top && (
+          <span className="bg-blue-500 text-white px-2 py-1 w-fit rounded-full absolute right-0">
+            Top {top}
+          </span>
+        )}
       </div>
     </div>
   );
