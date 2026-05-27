@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import type { ISong } from "../interfaces/ISong.interface";
-import { useCollection } from "../firebase/useCollection";
-import Trie from "../algorithms/Trie.class";
-import MaxHeap from "../algorithms/Heap.class";
-import Graph from "../algorithms/Graph.class";
+import type { ISong } from "../../interfaces/ISong.interface";
+import { useCollection } from "../../firebase/useCollection";
+import Trie from "../../algorithms/Trie.class";
+import MaxHeap from "../../algorithms/Heap.class";
+import Graph from "../../algorithms/Graph.class";
 
 export const useSongState = () => {
   //* Collection Hook
@@ -51,7 +51,7 @@ export const useSongState = () => {
     //* GUARDAR ESTRUCTURAS
     setTrie(newTrie);
     setGraph(newGraph);
-  }, [songs]);
+  }, [songs, suscribe]);
 
   useEffect(() => {
     if (!selectedSong) return;

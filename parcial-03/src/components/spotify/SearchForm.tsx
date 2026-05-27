@@ -1,5 +1,5 @@
-import { useSearchForm } from "../hooks/useSearchForm";
-import { Button } from "./shared/Button";
+import { useSearchForm } from "../../hooks/spotify/useSearchForm";
+import { Button } from "../shared/Button";
 
 export const SearchForm = () => {
   const { title, handleTitleChange, handleSubmit } = useSearchForm();

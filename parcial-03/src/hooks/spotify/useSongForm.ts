@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSong } from "./useSong";
-import type { ISong } from "../interfaces/ISong.interface";
+import type { ISong } from "../../interfaces/ISong.interface";
 import { toast } from "react-toastify";
 
 export const useSongForm = () => {
@@ -37,6 +37,11 @@ export const useSongForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!title || !artist || !genre || !coverUrl || !plays) {
+      toast.error("Todos los campos son obligatorios");
+      return;
+    }
 
     const song: ISong = {
       title,

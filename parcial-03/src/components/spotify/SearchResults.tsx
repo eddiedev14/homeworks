@@ -1,5 +1,5 @@
 import SongCard from "./SongCard";
-import { useSong } from "../hooks/useSong";
+import { useSong } from "../../hooks/spotify/useSong";
 
 export const SearchResults = () => {
     const { searchedSong, suggestedPrefixSongs, isSearched, setSelectedSong } = useSong();

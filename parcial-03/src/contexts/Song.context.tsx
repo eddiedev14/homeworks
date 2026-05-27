@@ -1,5 +1,5 @@
 import { createContext, type ReactNode } from "react";
-import { useSongState } from "../hooks/useSongState";
+import { useSongState } from "../hooks/spotify/useSongState";
 
 export type ISongContext = ReturnType<typeof useSongState>;
 

@@ -1,5 +1,5 @@
-import { Button } from "./shared/Button"
-import { useSongForm } from "../hooks/useSongForm"
+import { Button } from "../shared/Button"
+import { useSongForm } from "../../hooks/spotify/useSongForm"
 
 export const SongForm = () => {
   const { title, artist, genre, coverUrl, plays, handleTitleChange, handleArtistChange, handleGenreChange, handleCoverUrlChange, handlePlaysChange, handleSubmit } = useSongForm();

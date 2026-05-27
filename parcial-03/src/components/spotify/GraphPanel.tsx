@@ -1,5 +1,5 @@
+import { useSong } from "../../hooks/spotify/useSong";
 import SongCard from "./SongCard";
-import { useSong } from "../hooks/useSong";
 
 export const GraphPanel = () => {
     const { selectedSong, setSelectedSong, getRecommendations } = useSong();

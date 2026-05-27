@@ -1,4 +1,4 @@
-import type { ISong } from "../interfaces/ISong.interface";
+import type { ISong } from "../../interfaces/ISong.interface";
 
 interface Props {
     song: ISong;

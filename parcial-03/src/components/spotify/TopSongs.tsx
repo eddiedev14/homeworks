@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SongCard from "./SongCard";
-import { useSong } from "../hooks/useSong";
+import { useSong } from "../../hooks/spotify/useSong";
 
 export const TopSongs = () => {
     const { getTopSongs, setSelectedSong } = useSong();
